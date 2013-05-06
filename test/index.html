@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <title>QUnit Example</title>
+        <link rel="stylesheet" href="css/qunit-1.11.0.css">
+    </head>
+    <body>
+        <div id="qunit"></div>
+        <div id="qunit-fixture"></div>
+        
+        <br />
+        USER :
+        <ul>
+            <li id="test-login-user">
+                <a href="#">Log user in</a>
+            </li>
+            <li id="test-logout-user">
+                <a href="#">Log user out</a>
+            </li>
+            <li id="test-send-url">
+                <a href="#">Send url to playground</a>
+            </li>
+            <li id="test-load-login">
+                <a href="#">Reload json login service</a>
+            </li>
+            <li id="test-load-logout">
+                <a href="#">Reload json logout service</a>
+            </li>
+            <li id="test-quit-url">
+                <a href="#">Simulate user change page</a>
+            </li>
+        </ul>
+        
+        <script type="text/javascript">
+        /*{literal}<![CDATA[*/
+            var _plgd = _plgd || [],
+                _plgd_settings = {
+                    apiKey: "unitest"
+                };
+        /*]]>{/literal}*/
+        </script>
+        <script type="text/javascript" src="http://dropbox.dev/work/playground/js/ears.min.js"></script>
+        
+        <script src="js/jquery-1.8.3.min.js"></script>
+        <script src="js/qunit-1.11.0.js"></script>
+        <script src="js/tests.js"></script>
+    </body>
+</html>

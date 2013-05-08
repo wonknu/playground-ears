@@ -1,6 +1,5 @@
 /**
- * Method to create a namespace
- * Copyright (C) 2013 - Adfab - nicolas labb√© 
+ * Copyright (C) 2013 - Adfab - nicolas labbé
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,7 +22,10 @@
  * 
  * @param {Object} destination
  * @param {Object} source
+ * 
  * @return {Object} destination
+ * 
+ * @ignore
  */
 function extend (destination, source)
 {
@@ -52,6 +54,8 @@ function extend (destination, source)
  * @param {Object} ns
  * @param {Object} obj
  * @return {Object} destination
+ * 
+ * @ignore
  */
 function addToNamespace (ns, obj)
 {

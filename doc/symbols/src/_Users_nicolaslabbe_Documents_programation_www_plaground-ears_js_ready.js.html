@@ -22,31 +22,40 @@
 <span class='line'> 15</span>  * 
 <span class='line'> 16</span>  * You should have received a copy of the GNU General Public License
 <span class='line'> 17</span>  * along with this program. If not, see &lt;http://www.gnu.org/licenses/>.
-<span class='line'> 18</span>  *
-<span class='line'> 19</span>  * HOW TO USE :
-<span class='line'> 20</span>  * pl.ready(function);
-<span class='line'> 21</span>  */</span><span class="WHIT">
-<span class='line'> 22</span> 
+<span class='line'> 18</span>  */</span><span class="WHIT">
+<span class='line'> 19</span> 
+<span class='line'> 20</span> </span><span class="COMM">/** pl Object
+<span class='line'> 21</span>  * @class
+<span class='line'> 22</span>  */</span><span class="WHIT">
 <span class='line'> 23</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">pl</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'> 24</span> </span><span class="WHIT">    
 <span class='line'> 25</span>     </span><span class="COMM">/**
-<span class='line'> 26</span>      * Call a method when the dom is ready
-<span class='line'> 27</span>      * @param {Function} callback function
-<span class='line'> 28</span>      * @return {null} no return
-<span class='line'> 29</span>      * @this {Object} pl
-<span class='line'> 30</span>      */</span><span class="WHIT">
-<span class='line'> 31</span> </span><span class="WHIT">    </span><span class="NAME">ready</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">fn</span><span class="PUNC">)</span><span class="WHIT">
-<span class='line'> 32</span> </span><span class="WHIT">    </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 33</span> </span><span class="WHIT">        </span><span class="STRN">'use strict'</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 34</span> </span><span class="WHIT">        
-<span class='line'> 35</span>         </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">document.addEventListener</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 36</span> </span><span class="WHIT">            </span><span class="NAME">document.addEventListener</span><span class="PUNC">(</span><span class="STRN">'DOMContentLoaded'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">fn</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 37</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">window.addEventListener</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 38</span> </span><span class="WHIT">            </span><span class="NAME">window.addEventListener</span><span class="PUNC">(</span><span class="STRN">'load'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">fn</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="WHIT"> </span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 39</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">document.attachEvent</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 40</span> </span><span class="WHIT">            </span><span class="NAME">document.attachEvent</span><span class="PUNC">(</span><span class="STRN">'onreadystatechange'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">fn</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 41</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">window.attachEvent</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 42</span> </span><span class="WHIT">            </span><span class="NAME">window.attachEvent</span><span class="PUNC">(</span><span class="STRN">'onload'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">fn</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 43</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'> 44</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'> 45</span> </span><span class="PUNC">}</span></pre></body></html>
+<span class='line'> 26</span>      * Call a method when the dom is ready (like jquery.ready)
+<span class='line'> 27</span>      * 
+<span class='line'> 28</span>      * @name pl.ready
+<span class='line'> 29</span>      * 
+<span class='line'> 30</span>      * @param {Function} callback
+<span class='line'> 31</span>      * @return {null} no return
+<span class='line'> 32</span>      * 
+<span class='line'> 33</span>      * @this {App}
+<span class='line'> 34</span>      * 
+<span class='line'> 35</span>      * @example
+<span class='line'> 36</span>      * pl.ready( {Function} callback )
+<span class='line'> 37</span>      * 
+<span class='line'> 38</span>      * @since version 1.0.0
+<span class='line'> 39</span>      */</span><span class="WHIT">
+<span class='line'> 40</span> </span><span class="WHIT">    </span><span class="NAME">ready</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">fn</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 41</span> </span><span class="WHIT">    </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 42</span> </span><span class="WHIT">        </span><span class="STRN">'use strict'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 43</span> </span><span class="WHIT">        
+<span class='line'> 44</span>         </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">document.addEventListener</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 45</span> </span><span class="WHIT">            </span><span class="NAME">document.addEventListener</span><span class="PUNC">(</span><span class="STRN">'DOMContentLoaded'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">fn</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 46</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">window.addEventListener</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 47</span> </span><span class="WHIT">            </span><span class="NAME">window.addEventListener</span><span class="PUNC">(</span><span class="STRN">'load'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">fn</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="WHIT"> </span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 48</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">document.attachEvent</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 49</span> </span><span class="WHIT">            </span><span class="NAME">document.attachEvent</span><span class="PUNC">(</span><span class="STRN">'onreadystatechange'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">fn</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 50</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">window.attachEvent</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 51</span> </span><span class="WHIT">            </span><span class="NAME">window.attachEvent</span><span class="PUNC">(</span><span class="STRN">'onload'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">fn</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 52</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 53</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 54</span> </span><span class="PUNC">}</span></pre></body></html>

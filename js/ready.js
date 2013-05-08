@@ -15,18 +15,27 @@
  * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
- * HOW TO USE :
- * pl.ready(function);
  */
 
+/** pl Object
+ * @class
+ */
 var pl = {
     
     /**
-     * Call a method when the dom is ready
-     * @param {Function} callback function
+     * Call a method when the dom is ready (like jquery.ready)
+     * 
+     * @name pl.ready
+     * 
+     * @param {Function} callback
      * @return {null} no return
-     * @this {Object} pl
+     * 
+     * @this {App}
+     * 
+     * @example
+     * pl.ready( {Function} callback )
+     * 
+     * @since version 1.0.0
      */
     ready : function (fn)
     {

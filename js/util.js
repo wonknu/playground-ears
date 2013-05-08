@@ -1,6 +1,6 @@
 /**
  * Utilities object
- * Copyright (C) 2013 - Adfab - nicolas labb√© 
+ * Copyright (C) 2013 - Adfab - nicolas labbé
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,32 +14,37 @@
  * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
- * 
- * HOW TO USE :
- * Adfab.Playground.Util || NS.Util
- * 
- * usefull method
- * 
- * NS.Util.not_null
- * NS.Util.getValueFromObject
- * NS.Util.createCookie
- * NS.Util.readCookie
- * NS.Util.eraseCookie
- * NS.Util.matchUrl
- * NS.Util.log
  */
 
 pl.ready(function ()
 {
     'use strict';
     
+	/**
+	 * @namespace reference to Adfab.Playground.Util object
+	 */
+	
+    /** Util Object
+     * @class
+     * @name NS.Util
+     */
     var util = {
         
         /**
          * Check if a variable is null
-         * @param {Object} object
-         * @return {Boolean} true or false
-         * @this {Object} util
+	     * @function
+         * 
+	     * @name NS.Util.not_null
+	     * 
+         * @param {Object} object DOM object
+         * @return {boolean} bool true or false
+	     * 
+	     * @this {Util}
+	     * 
+	     * @example
+	     * NS.Util.not_null( Object | String | ... )
+	     * 
+	     * @since version 1.0.0
          */
         not_null: function (obj)
         {
@@ -50,13 +55,24 @@ pl.ready(function ()
         
         /**
          * Return the content of the given tag
+	     * @function
+         * 
+	     * @name NS.Util.getValueFromObject
+	     * 
          * @param {Object} DOM Object
          * @return {String} value
-         * @this {Object} util
+	     * 
+	     * @this {Util}
+	     * 
+	     * @example
+	     * NS.Util.getValueFromObject( Object | String | ... )
+	     * 
+	     * @since version 1.0.0
          */
         getValueFromObject: function (obj)
         {
             'use strict';
+            
             var value = '';
             if(NS.Util.not_null(obj) && typeof obj == 'object' && obj.type != undefined) {
                 if(obj.value != undefined) {
@@ -69,12 +85,22 @@ pl.ready(function ()
         },
         
         /**
-         * Create a cookie
+         * Create a cookie under Adfab.Playground.[ name ]
+	     * @function
+	     * 
+	     * @name NS.Util.createCookie
+	     * 
          * @param {String} name
          * @param {String} value
-         * @param {Integer} number of days
+         * @param {Number} [number] of days (optional)
          * @return {null} no return
-         * @this {Object} util
+         * 
+	     * @this {Util}
+	     * 
+	     * @example
+	     * NS.Util.createCookie( {String} name, {String} value, [ {Number} days ])
+	     * 
+	     * @since version 1.0.0
          */
         createCookie: function (name, value, days)
         {
@@ -97,9 +123,19 @@ pl.ready(function ()
         
         /**
          * Get value of a cookie
+	     * @function
+	     * 
+	     * @name NS.Util.readCookie
+	     * 
          * @param {String} name
          * @return {String} | {null} value of the cookie
-         * @this {Object} util
+         * 
+	     * @this {Util}
+	     * 
+	     * @example
+	     * NS.Util.readCookie( {String} name)
+	     * 
+	     * @since version 1.0.0
          */
         readCookie: function (name)
         {
@@ -126,9 +162,19 @@ pl.ready(function ()
         
         /**
          * Delete a cookie
+	     * @function
+	     * 
+	     * @name NS.Util.eraseCookie
+	     * 
          * @param {String} name
          * @return {null} no return
-         * @this {Object} util
+         * 
+	     * @this {Util}
+	     * 
+	     * @example
+	     * NS.Util.readCookie( {String} name)
+	     * 
+	     * @since version 1.0.0
          */
         eraseCookie: function (name)
         {
@@ -146,9 +192,19 @@ pl.ready(function ()
         
         /**
          * Tell if input URL match current URL
+	     * @function
+	     * 
+	     * @name NS.Util.matchUrl
+	     * 
          * @param {String} url
-         * @return {Boolean} true or false
-         * @this {Object} util
+         * @return {Boolean} bool true or false
+         * 
+	     * @this {Util}
+	     * 
+	     * @example
+	     * NS.Util.matchUrl( {String} url)
+	     * 
+	     * @since version 1.0.0
          */
         matchUrl: function (url)
         {
@@ -159,9 +215,17 @@ pl.ready(function ()
         /**
          * Tell if input URL is a good url to watch
          * We need to exclude playground URL
+	     * @function
+	     * 
          * @param {String} url
-         * @return {Boolean} true or false
-         * @this {Object} util
+         * @return {Boolean} bool true or false
+         * 
+	     * @this {Util}
+	     * 
+	     * @example
+	     * NS.Util.isUrlValid( {String} url)
+	     * 
+	     * @since version 1.0.0
          */
         isUrlValid: function (url)
         {
@@ -170,14 +234,24 @@ pl.ready(function ()
         },
         
         /**
-         * log string if config allow it 
+         * log string if NS.Cache.Config.debug allow it
+	     * @function
+	     * 
+	     * @name NS.Util.log
+	     * 
          * @param {Object} str
-         * @return {null} no return
-         * @this {Object} util
+         * @return {null}
+         * 
+	     * @this {Util}
+	     * 
+	     * @example
+	     * NS.Util.log( {String} str)
+	     * 
+	     * @since version 1.0.0
          */
         log: function (str)
         {
-            if(NS.Cache.config) {
+            if(NS.Cache.config.debug) {
                 console.log("%c> PLAYGROUND DEBUG ::", "color:blue; font-weight:bold;")
                 console.log(str)
             }
@@ -185,10 +259,21 @@ pl.ready(function ()
        
        /**
         * get dom element from object.selector and object.name
-        * {String} "selector" and {String} "name"
+	    * @function
+	    * 
+	    * @name NS.Util.getDomElemntFromItem
+	    * 
         * @param {Object} item object with variable
-        * @return {Object} dom object
-        * @this {Object} User
+        * @param item.selector type of the DOM element
+        * @param item.name id or class of the DOM element
+        * @return {Object} obj DOM object
+        * 
+	    * @this {Util}
+	    * 
+	    * @example
+	    * NS.Util.getDomElemntFromItem( {String} it)
+	    * 
+	    * @since version 1.0.0
         */
        getDomElemntFromItem: function (it)
        {

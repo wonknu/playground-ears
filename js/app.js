@@ -1,7 +1,6 @@
 /**
- * Creates an instance of App.
  * this is the main application file, which one that init project bind event, etc...
- * Copyright (C) 2013 - Adfab - nicolas labb√© 
+ * Copyright (C) 2013 - Adfab - nicolas labbé
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,24 +14,19 @@
  * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
- * @class App
- * 
- * HOW TO USE :
- * Adfab.Playground.App || NS.App
  */
 
 pl.ready(function ()
 {
     'use strict';
     
-    /**
-     * App constructor
-     * 
-     * @constructor
-     * @this {App}
-     * @param {null} no params
-     * @return {App} this
+	/**
+	 * @namespace reference to Adfab.Playground.App object
+	 */
+	
+    /** App Object
+     * @class
+     * @name NS.App
      */
     function App ()
     {
@@ -42,11 +36,18 @@ pl.ready(function ()
     /**
      * Start the App object by using init
      * This method create the namespace used all over the application
-     * var NS = Adfab.Playground
+     * @function
      * 
-     * @this {App}
+     * @name NS.App.init
+     * 
      * @param {null} no params
      * @return {null} no return
+     * 
+     * @this {App}
+     * 
+     * @ignore
+     * 
+     * @since version 1.0.0
      */
     App.prototype.init = function ()
     {
@@ -69,10 +70,18 @@ pl.ready(function ()
     
     /**
      * Bind the event to track user move
+     * @function
      * 
-     * @this {App}
+     * @name NS.App.bindEvent
+     * 
      * @param {null} no params
      * @return {null} no return
+     * 
+     * @this {App}
+     * 
+     * @ignore
+     * 
+     * @since version 1.0.0
      */
     App.prototype.bindEvent = function ()
     {
@@ -123,10 +132,18 @@ pl.ready(function ()
     /**
      * Init easyXDM by calling this method
      * Using easyXDM as RPC mode
+     * @function
      * 
-     * @this {App}
+     * @name NS.App.easyXDM
+     * 
      * @param {null} no params
      * @return {null} no return
+     * 
+     * @this {App}
+     * 
+     * @ignore
+     * 
+     * @since version 1.0.0
      */
     App.prototype.easyXDM = function ()
     {
@@ -148,10 +165,19 @@ pl.ready(function ()
     
     /**
      * Send a request to easyXDM using RPC with no return
+     * @function
      * 
-     * @this {App}
+     * @name NS.App.send
+     * 
      * @param {string} url of the service
      * @return {Boolean} valid url
+     * 
+     * @this {App}
+     * 
+     * @example
+     * NS.App.send( {String} url)
+     * 
+     * @since version 1.0.0
      */
     App.prototype.send = function (url)
     {
@@ -185,12 +211,22 @@ pl.ready(function ()
     
     /**
      * Send a request to easyXDM using RPC waiting for a json return
-     * User promise NS.App.call('service.php').then(function () {})
+     * @function
+     * 
+     * @name NS.App.call
+     * 
+     * @param {string} serviceName
+     * @return {Object} promise
      * 
      * @this {App}
-     * @param {string} the service name or url part
+     * 
      * @throws {requestError} service cannot be called
-     * @return {null} no return
+     * 
+     * @example
+     * NS.App.call( {String} service )
+     * .then( {Function} callback)
+     * 
+     * @since version 1.0.0
      */
     App.prototype.call = function (s)
     {

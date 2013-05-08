@@ -1,7 +1,6 @@
 /**
- * List off pattern that can be used by the appliation
  * this is the main application file, which one that init project bind event, etc...
- * Copyright (C) 2013 - Adfab - nicolas labbé 
+ * Copyright (C) 2013 - Adfab - nicolas labb�
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,39 +14,78 @@
  * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
- * @class promise
- * 
- * HOW TO USE :
- * Adfab.Playground.Promise || NS.Promise
  */
 
 pl.ready(function ()
 {
     'use strict';
     
+	/**
+	 * @namespace  reference to Adfab.Playground.Promise object
+	 */
+     
     /**
-     * Implémentation du pattern promise
-     * @constructor
-     * @param {null} no params
-     * @return {null} no return
-     * @this {Object} promise
+     * Create a new instance of Promise pattern
+     * 
+     * @name promise
      */
     var promise = function ()
     {
         'use strict';
     };
     
+    /**
+     * Create a new instance of Promise pattern
+     * 
+     * @name NS.Promise
+     * @class
+	 * @constructor
+	 * 
+	 * @param {null}
+	 * @return {Object} this
+     * 
+     * @this {object} NS.Promise
+	 * 
+	 * @example
+	 * var p = new NS.Promise();
+	 * // call success callback
+	 * p.resolve();
+	 * // call error callback
+	 * p.reject();
+	 * 
+     * @since version 1.0.0
+	 */
     promise.prototype = {
-        pending:null,
-        
-        /**
-         * function called by other with 2 method
-         * @param {Function} success callback
-         * @param {Function} failure callback
-         * @return {object} this
-         * @this {object} promise
-         */
+    	
+		/**
+	     * @ignore
+	     */
+	    pending: {
+	        resolve: function ()
+			{
+	            'use strict';
+	        },
+	        reject: function ()
+	        {
+	            'use strict';
+	        }
+	    },
+	    
+	    /** function called when a promise is done
+	     * 
+	     * @function
+	     * @name NS.Promise.then
+	     * 
+	     * @param {Function} success callback
+	     * @param {Function} failure callback
+	     * 
+	     * @this {object} NS.Promise
+	     * 
+	     * @example
+	     * NS.Promise.then( {Function} success, {Function} error)
+	     * 
+	     * @since version 1.0.0
+	     */
         then: function (success, failure)
         {
             'use strict';
@@ -56,12 +94,21 @@ pl.ready(function ()
             return this;
         },
         
-        /**
-         * never call this method, use then (success, failure)
-         * @param {object} value
-         * @return {null} no return
-         * @this {object} promise
-         */
+	    /**
+	     * never call this method, use then (success, failure)
+	     * @function
+	     * 
+	     * @name NS.Promise.resolve
+	     * 
+	     * @param {object} value
+	     * @return {null} no return
+	     * 
+	     * @this {object} NS.Promise
+	     * 
+	     * @ignore
+	     * 
+	     * @since version 1.0.0
+	     */
         resolve: function (value)
         {
             'use strict';
@@ -69,12 +116,21 @@ pl.ready(function ()
             this.pending.resolve(value);
         },
         
-        /**
-         * never call this method, use then (success, failure)
-         * @param {object} value
-         * @return {null} no return
-         * @this {object} promise
-         */
+	    /**
+	     * never call this method, use then (success, failure)
+	     * @function
+	     * 
+	     * @name NS.Promise.reject
+	     * 
+	     * @param {object} value
+	     * @return {null} no return
+	     * 
+	     * @this {object} NS.Promise
+	     * 
+	     * @ignore
+	     * 
+	     * @since version 1.0.0
+	     */
         reject: function (error)
         {
             'use strict';

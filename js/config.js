@@ -1,5 +1,4 @@
 /**
- * Creates an instance of App.
  * this is the main application file, which one that init project bind event, etc...
  * Copyright (C) 2013 - Adfab - nicolas labbé 
  * 
@@ -15,17 +14,26 @@
  * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
- * constante used by the application
- * never call those variable except for NS which
- * handle the application namespace
+ */
+
+/** Never call this constant by NS
+ * @constant Adfab 
  */
 var Adfab = Adfab || {},
-    
+
+	/**
+	 * @namespace reference to Adfab.Playground object
+	 */
     NS = {},
 
+	/** Application settings, need to be fill by partner
+	 * @constant _plgd_settings 
+	 */
     _plgd_settings = _plgd_settings || {},
     
+	/** Application config, need to be fill by developper
+	 * @constant pl_config 
+	 */
     pl_config = {
         debug: true,
         url: 'localhost/Dropbox/work/playground/',

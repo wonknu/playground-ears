@@ -1,5 +1,4 @@
 /**
- * Create a user object
  * Copyright (C) 2013 - Adfab - nicolas labbé 
  * 
  * This program is free software: you can redistribute it and/or modify
@@ -14,15 +13,16 @@
  * 
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
- * 
- * HOW TO USE :
- * Adfab.Playground.User || NS.User
  */
 
 pl.ready(function ()
 {
     'use strict';
     
+    /** User Object
+     * @class
+     * @name NS.User
+     */
     var user = {
         
         env: { },
@@ -35,10 +35,19 @@ pl.ready(function ()
         },
         
         /**
-         * @contructor
-         * @param {null} no param
-         * @return {null} no return
-         * @this {Object} User
+         * Init the user object
+         * @function
+	     * 
+	     * @name NS.User.init
+	     * 
+         * @param {null}
+         * @return {null}
+	     * 
+	     * @this {User}
+	     * 
+	     * @ignore
+	     * 
+	     * @since version 1.0.0
          */ 
         init: function ()
         {
@@ -60,8 +69,19 @@ pl.ready(function ()
         
         /**
          * check on cookie if user is logged
-         * @param {null} no param
-         * @return {Boolean} true or false
+         * @function
+	     * 
+	     * @name NS.User.isLogged
+	     * 
+         * @param {null} 
+         * @return {Boolean} bool true or false
+	     * 
+	     * @this {User}
+	     * 
+	     * @example
+	     * NS.User.isLogged()
+	     * 
+	     * @since version 1.0.0
          */
         isLogged: function ()
         {
@@ -79,9 +99,18 @@ pl.ready(function ()
          * Call service to get json data of logout user method
          * put the return into NS.User.data
          * then call bindLogout
-         * @param {null} no param
-         * @return {null} no return
-         * @this {Object} User
+         * @function
+	     * 
+	     * @name NS.User.loadAuthent
+	     * 
+         * @param {null}
+         * @return {Object} promise
+	     * 
+	     * @this {User}
+	     * 
+	     * @ignore
+	     * 
+	     * @since version 1.0.0
          */
         loadAuthent: function ()
         {
@@ -94,13 +123,27 @@ pl.ready(function ()
                     NS.User.data = data;
                     NS.Util.createCookie('authent', JSON.stringify(data));
                 	p.resolve();
-                    //NS.User.bindLogout();
                 }
             );
             
             return p;
         },
         
+        /**
+         * Check if the user is logged, logout, or tried to login/logout 
+         * @function
+	     * 
+	     * @name NS.User.checkUser
+	     * 
+         * @param {null}
+         * @return {null}
+	     * 
+	     * @this {User}
+	     * 
+	     * @ignore
+	     * 
+	     * @since version 1.0.0
+         */
         checkUser: function ()
         {
             if(NS.Util.not_null(NS.Util.readCookie('logout-try'))) { // USER TRIED TO LOUGOUT
@@ -129,9 +172,19 @@ pl.ready(function ()
          * Set the login for current user if param {String} not null
          * call loadLogout to track logout since the user is logged
          * then return the login
-         * @param {String} str (optional) if not set juste return the login
-         * @return {String} NS.User.data.login
-         * @this {Object} User
+         * @function
+	     * 
+	     * @name NS.User.login
+	     * 
+         * @param {String} str (optional) if not set just return the login
+         * @return {String} NS.User.data.id
+	     * 
+	     * @this {User}
+	     * 
+	     * @example
+	     * NS.User.login( {String} username )
+	     * 
+	     * @since version 1.0.0
          */
         login: function (str)
         {
@@ -153,9 +206,19 @@ pl.ready(function ()
         
         /**
          * force logout user, then call loadLogin since user is logged out
-         * @param {null} no param
-         * @return {null} no return
-         * @this {Object} User
+         * @function
+	     * 
+	     * @name NS.User.logout
+	     * 
+         * @param {null} 
+         * @return {null}
+	     * 
+	     * @this {User}
+	     * 
+	     * @example
+	     * NS.User.logout()
+	     * 
+	     * @since version 1.0.0
          */
         logout: function ()
         {
@@ -164,16 +227,23 @@ pl.ready(function ()
             NS.Util.eraseCookie('login');
             NS.User.id = null;
             NS.App.send(top.location.href);
-            
-            // so bind login
-            // NS.User.loadLogin();
         },
         
         /**
          * Generate unique id for anonymous user
-         * @param {null} no param
-         * @return {String} the id
-         * @this {Object} User
+         * @function
+         * 
+	     * @name NS.User.GenerateUniqueId
+	     * 
+         * @param {null}
+         * @return {String} id
+	     * 
+	     * @this {User}
+	     * 
+	     * @example
+	     * NS.User.GenerateUniqueId()
+	     * 
+	     * @since version 1.0.0
          */
         GenerateUniqueId: function ()
         {
@@ -188,9 +258,18 @@ pl.ready(function ()
         
         /**
          * Check evidences for current user.evidences object
-         * @param {null} no param
-         * @return {Boolean} result of the checking
-         * @this {Object} User
+         * @function
+         * 
+	     * @name NS.User.checkEvidences
+	     * 
+         * @param {null}
+         * @return {Boolean} result true | false
+	     * 
+	     * @this {User}
+	     * 
+	     * @ignore
+	     * 
+	     * @since version 1.0.0
          */
         checkEvidences: function (evidences)
         {
@@ -215,9 +294,18 @@ pl.ready(function ()
         /**
          * Call this method when user quit the current to check if try to logout/login
          * make cookies 'login-try' and 'logout-try'
-         * @param {null} no param
-         * @return {null} no return
-         * @this {Object} User
+         * @function
+         * 
+	     * @name NS.User.quit
+	     * 
+         * @param {null}
+         * @return {null}
+	     * 
+	     * @this {User}
+	     * 
+	     * @ignore
+	     * 
+	     * @since version 1.0.0
          */
         quit: function ()
         { 

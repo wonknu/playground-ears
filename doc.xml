@@ -1,39 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="Test-JsDoc" default="jsdoc" basedir=".">
+<project default="docs" basedir="." name="jsdoc3-ant-task">
 
-    <property name="src.dir" location="${basedir}/js" />
+	<property name="window.dir" value="${basedir}/build/jsdoc_toolkit-2.4.0/jsdoc-toolkit" />
+	<property name="source.dir" value="${basedir}/js" />
+	<property name="doc.dir" value="${basedir}/doc" />
 
-    <property name="jsdoc.dir" location="${basedir}/build/jsdoc-toolkit/lib/jsdoc-toolkit/jsdoc_toolkit-2.4.0" />
-    <property name="rhino.dir" location="${basedir}/build/jsdoc-toolkit/lib/rhino" />
-    <property name="ant-task.dir" location="${basedir}/build/jsdoc-toolkit" />
+	<property name="tool.dir" value="${basedir}/build" />
 
-    <property name="out.dir" location="${basedir}/doc" />
+	<property name="jsdoctoolkit.dir" value="${tool.dir}/jsdoc_toolkit-2.4.0/jsdoc-toolkit" />
 
-    <!-- Define the classpath for the Apache Ant task - needs Rhino as well. -->
-    <path id="jsdoc.classpath">
-        <pathelement path="${rhino.dir}/js-1.7r2.jar" />
-        <pathelement path="${ant-task.dir}/jsdoc-toolkit-ant-task-1.1.2.jar" />
-    </path>
+	<target name="docs" description="Generates documentation">
+		<sequential>
+	        <delete dir="${doc.dir}"/>
+	        <mkdir dir="${doc.dir}" />
 
-    <!-- Define the Ant Task -->
-    <taskdef name="jsdoctoolkit" classname="uk.co.darrenhurley.ant.tasks.JsDocToolkit" classpathref="jsdoc.classpath" />
+	        <echo message="Running JSDoc Toolkit"/>
 
-    <!-- This is the default target - it generates the JsDoc documents -->
-    <target name="jsdoc" depends="" description="Generate JsDoc.">
-        <jsdoctoolkit jsdochome="${jsdoc.dir}/" template="jsdoc" outputdir="${out.dir}" includeprivate="true">
-            <source file="${src.dir}/cache.js" />
-            <source file="${src.dir}/config.js" />
-		    <source file="${src.dir}/namespace.js" />
-		    <source file="${src.dir}/pattern.js" />
-		    <source file="${src.dir}/ready.js" />
-		    <source file="${src.dir}/util.js" />
-            <source file="${src.dir}/user.js" />
-		    <source file="${src.dir}/app.js" />
-        </jsdoctoolkit>
-    </target>
-
-    <!-- Neat and Tidy, Tidy and Neat - best to clean up afterwards... -->
-    <target name="clean" description="Cleanup everything this build script creates.">
-        <delete dir="${out.dir}" />
-    </target>
+	        <!-- The java exe is told to run in the dir where our source files reside.
+	                 If we instead ran it from the dir that the build file is in and gave it
+	                 full paths to the source files the documentation would include the full
+	                 filesystem paths (c:\path\to\source\) instead of relative ones.
+	                 Since this command is running in the source dir, all of the paths
+	                 given to it must first traverse down a level (../) to get back to the
+	                 build file dir.
+	        -->
+	        <exec executable="java" dir="${source.dir}">
+	            <arg line="-jar ${window.dir}/jsrun.jar ${window.dir}/app/run.js" />
+	        	
+	            <!-- -d tells JSDoc toolkit where to output the documentation -->
+	            <arg line="-d=${doc.dir}" />
+	        	
+	            <!-- use the default template -->
+	            <arg line="-t=${jsdoctoolkit.dir}/templates/jsdoc" />
+	        	
+	            <!-- Create an arg element for each file you want to include in the documentation -->
+	        	<arg line="${source.dir}/app.js" />
+	        	<arg line="${source.dir}/cache.js" />
+	        	<arg line="${source.dir}/config.js" />
+	        	<arg line="${source.dir}/namespace.js" />
+	        	<arg line="${source.dir}/pattern.js" />
+	        	<arg line="${source.dir}/ready.js" />
+	        	<arg line="${source.dir}/user.js" />
+	        	<arg line="${source.dir}/util.js" />
+	        </exec>
+	    </sequential>
+	</target>
 </project>

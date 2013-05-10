@@ -5,7 +5,11 @@
         
     <target name="compile">
         
-        <jscomp compilationLevel="advanced" warning="quiet" debug="false" output="js/ears.min.js">
+        <jscomp compilationLevel="simple"
+        	prettyPrint="true"
+        		warning="quiet"
+        			debug="false"
+    					output="js/ears.min.js">
             
         	<sources dir="easyXDM">
                	<file name="easyXDM.min.js"/>

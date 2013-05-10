@@ -36,6 +36,8 @@ var Adfab = Adfab || {},
 	 */
     pl_config = {
         debug: true,
-        url: 'localhost/Dropbox/work/playground/',
+        url: 'localhost/plaground-ears/',
+        send: 'send.php',
+        connect: 'connect.php',
         ns: 'Adfab.playground'
     };

@@ -2,56 +2,23 @@
 header('Content-type: application/json');
 ?>
 {
-	"login": {
-	    "urls": {
-	        "page":"http://dropbox.dev/work/playground/login.html",
-	        "success":"http://dropbox.dev/work/playground/success.html"
-	    },
-	    "items":
-	    [
-	        {
-	            "selector":"id",
-	            "name":"edit-first-name"
-	        },
-	        {
-	            "selector":"class",
-	            "name":"edit-last-name"
-	        },
-	        {
-	            "selector":"id",
-	            "name":"edit-mail"
-	        },
-	        {
-	            "selector":"id",
-	            "name":"edit-age"
-	        }
-	    ],
-	    "evidences": 
-	    [
-	        {
-	            "selector":"id",
-	            "name":"logout"
-	        }
-	    ]
-	},
-	"logout": {
-	    "urls": {
-	        "page":"http://dropbox.dev/work/playground/logout.html",
-	        "success":"http://dropbox.dev/work/playground/login.html"
-	    },
-	    "items":
-	    [
-	        {
-	            "selector":"id",
-	            "name":"logout"
-	        }
-	    ],
-	    "evidences": 
-	    [
-	        {
-	            "selector":"id",
-	            "name":"edit-first-name"
-	        }
-	    ]
-	}
+    "login": {
+        "urls": {
+            "page":"http://p.magento/index.php/customer/account/login/",
+            "success":"http://p.magento/index.php/customer/account/"
+        },
+        "items":
+        [
+            {
+                "selector":"id",
+                "name":"email"
+            }
+        ]
+    },
+    "logout": {
+        "urls": {
+            "page":"http://p.magento/",
+            "success":"http://p.magento/index.php/customer/account/logoutSuccess/"
+        }
+    }
 }

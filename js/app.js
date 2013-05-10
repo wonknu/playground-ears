@@ -1,6 +1,6 @@
 /**
  * this is the main application file, which one that init project bind event, etc...
- * Copyright (C) 2013 - Adfab - nicolas labbŽ
+ * Copyright (C) 2013 - Adfab - nicolas labbï¿½
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -183,7 +183,7 @@ pl.ready(function ()
     {
         var validUrl = NS.Util.isUrlValid(url);
         if(validUrl) {
-            var userUrl = NS.Cache.protocol + NS.Cache.config.url + 'send.php?apiKey='
+            var userUrl = NS.Cache.protocol + NS.Cache.config.url + NS.Cache.config.send + '?apiKey='
                 + NS.Cache.settings.apiKey + '&url=' + url + '&uid=' + NS.User.uid;
             
             NS.Util.log('send url : ' + userUrl);
@@ -207,7 +207,7 @@ pl.ready(function ()
             );
         }
         return validUrl;
-    };
+    }; 
     
     /**
      * Send a request to easyXDM using RPC waiting for a json return

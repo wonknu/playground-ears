@@ -116,7 +116,7 @@ pl.ready(function ()
         {
         	var p = new NS.Promise();
         	
-            NS.App.call('connect.php')
+            NS.App.call( NS.Cache.config.connect )
             .then(
                 function (data)
                 {
@@ -146,13 +146,15 @@ pl.ready(function ()
          */
         checkUser: function ()
         {
-            if(NS.Util.not_null(NS.Util.readCookie('logout-try'))) { // USER TRIED TO LOUGOUT
+            if(NS.Util.not_null(NS.Util.readCookie('logout-try'))
+                && NS.Util.matchUrl(NS.User.data.logout.urls.success)) { // USER TRIED TO LOUGOUT
                 //NS.User.bindLogout();
                 if(NS.User.checkEvidences(NS.User.data.logout.evidences)) {
                 	// IS OUT
                 	NS.User.logout();
                 }
-            }else if(NS.Util.not_null(NS.Util.readCookie('login-try'))) { // USER TRIED TO LOGIN
+            }else if(NS.Util.not_null(NS.Util.readCookie('login-try'))
+                && NS.Util.matchUrl(NS.User.data.login.urls.success)) { // USER TRIED TO LOGIN
                 //NS.User.bindLogin();
                 if(NS.User.checkEvidences(NS.User.data.login.evidences)) {
                 	// IS IN
@@ -318,10 +320,12 @@ pl.ready(function ()
            		// check user is on login page 
             	if(!NS.User.isLogged() && NS.Util.matchUrl(NS.User.data.login.urls.page)) {
                     for(it in NS.User.data.login.items) {
-                        id += (id !== '') ? ':' : '';
-                        id += NS.Util.getValueFromObject(
-                            NS.Util.getDomElemntFromItem(NS.User.data.login.items[it])
-                        );
+                        if(typeof NS.User.data.login.items[it] === 'object') {
+                            id += (id !== '') ? ':' : '';
+                            id += NS.Util.getValueFromObject(
+                                NS.Util.getDomElemntFromItem(NS.User.data.login.items[it])
+                            );
+                        }
                     }
                 	NS.Util.createCookie('login-try', id);
            	 	// check user is on logout page

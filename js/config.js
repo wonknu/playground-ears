@@ -20,7 +20,7 @@
  * @constant Adfab 
  */
 var Adfab = Adfab || {},
-
+ 
 	/**
 	 * @namespace reference to Adfab.Playground object
 	 */

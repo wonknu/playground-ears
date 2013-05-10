@@ -6,10 +6,9 @@
     <target name="compile">
         
         <jscomp compilationLevel="simple"
-        	prettyPrint="true"
-        		warning="quiet"
-        			debug="false"
-    					output="js/ears.min.js">
+    		warning="quiet"
+    			debug="false"
+					output="js/ears.min.js">
             
         	<sources dir="easyXDM">
                	<file name="easyXDM.min.js"/>

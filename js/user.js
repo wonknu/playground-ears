@@ -54,7 +54,14 @@ pl.ready(function ()
             PG.User.GenerateUniqueId();
             PG.User.urls.prev = PG.Util.readCookie('prev-url');
             
-            var authent = PG.Util.readCookie('authent');
+            var authent = PG.Util.readCookie('authent'),
+            	lastSync = PG.Util.readCookie('last-sync'),
+            	today = new Date().getTime();
+           	
+            if(!PG.Util.not_null(lastSync) || (parseInt(lastSync) + parseInt(24 * 60 * 60)) < today) {
+            	authent = null;
+            }
+            
             if(!PG.Util.not_null(authent)) {
             	PG.User.loadAuthent()
             	.then(function ()
@@ -116,11 +123,12 @@ pl.ready(function ()
         {
         	var p = new PG.Promise();
         	
-            PG.App.call( PG.Cache.config.connect )
+            PG.App.call( PG.Cache.config.env[PG.Cache.config.mode].connect )
             .then(
                 function (data)
                 {
                     PG.User.data = data;
+                	PG.Util.createCookie('last-sync', new Date().getTime());
                     PG.Util.createCookie('authent', JSON.stringify(data));
                 	p.resolve();
                 }

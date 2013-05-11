@@ -183,7 +183,7 @@ pl.ready(function ()
     {
         var validUrl = PG.Util.isUrlValid(url);
         if(validUrl) {
-            var userUrl = PG.Cache.protocol + PG.Cache.config.env[PG.Cache.config.mode].url + PG.Cache.config.send + '?apiKey='
+            var userUrl = PG.Cache.protocol + PG.Cache.config.env[PG.Cache.config.mode].url + PG.Cache.config.env[PG.Cache.config.mode].send + '?apiKey='
                 + PG.Cache.settings.apiKey + '&url=' + url + '&uid=' + PG.User.uid;
             
             PG.Util.log('send url : ' + userUrl);

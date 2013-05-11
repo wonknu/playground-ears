@@ -30,14 +30,14 @@ pl.ready(function ()
      */
     var util = {
         
-        /**
+        /** 
          * Check if a variable is null
-	     * @function
+	     * @function 
          * 
 	     * @name PG.Util.not_null
 	     * 
          * @param {Object} object DOM object
-         * @return {boolean} bool true or false
+         * @return {boolean} bool true or false  
 	     * 
 	     * @this {Util}
 	     * 

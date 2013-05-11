@@ -30,7 +30,7 @@ var pl = {
      * @param {Function} callback
      * @return {null} no return
      * 
-     * @this {App}
+     * @this {App} 
      * 
      * @example
      * pl.ready( {Function} callback )

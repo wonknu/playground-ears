@@ -20,5 +20,26 @@ header('Content-type: application/json');
             "page":"http://pmagento.dev/",
             "success":"http://pmagento.dev/index.php/customer/account/logoutSuccess/"
         }
-    }
+    },
+    "taxonomy": {
+		"config": {
+			"broadcast": false
+		},
+		"items":
+		[
+			{
+				"url": "/account/",
+				"xpath": "//div[@class='block-account']",
+				"id": "account"
+			},
+			{
+				"url":"/checkout/",
+				"id":"checkout"
+			},
+			{
+				"xpath":"//div[@class='my-wishlist']",
+				"id":"wishlist"
+			}
+		]
+	}
 }

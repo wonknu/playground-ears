@@ -53,6 +53,43 @@ pl.ready(function ()
             return ((obj != null) ? ((typeof(obj) != 'undefined') ? ((obj !== '') ? true : false) : false) : false);
         },
         
+        /** 
+         * Return true if xpath is found
+	     * @function 
+         * 
+	     * @name PG.Util.not_null
+	     * 
+         * @param {String} xpath 
+         * @return {boolean} bool true or false  
+	     * 
+	     * @this {Util}
+	     * 
+	     * @example
+	     * PG.Util.checkXpath( {String} xpath )
+	     * 
+	     * @since version 1.0.0
+         */
+        checkXpath: function (xpath)
+        {
+        	var result = document.evaluate(
+	        		xpath,
+	        		document.documentElement,
+	        		null,
+	        		XPathResult.ORDERED_NODE_ITERATOR_TYPE,
+					null
+				),
+				cpt = 0;
+				
+				if (result) {
+				    var node = result.iterateNext();
+				    while(node) {
+				        cpt++;
+				        node = result.iterateNext();
+				    }
+				}
+				return (cpt > 0) ? true : false;
+        },
+        
         /**
          * Return the content of the given tag
 	     * @function
@@ -209,7 +246,12 @@ pl.ready(function ()
         matchUrl: function (url)
         {
             'use strict';
-            return (top.location.href.indexOf(url) >= 0) ? true : false;
+            try {
+	            url = eval(url);
+	            return (url.test(top.location.href));
+            }catch (e) {
+            	return false;
+            }
         },
         
         /**

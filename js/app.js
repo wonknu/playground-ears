@@ -181,10 +181,38 @@ pl.ready(function ()
      */
     App.prototype.send = function (url)
     {
-        var validUrl = PG.Util.isUrlValid(url);
-        if(validUrl) {
+        var validUrl = PG.Util.isUrlValid(url),
+        	validXpath = (PG.User.data.taxonomy.config.broadcast) ? '&xpath=broadcast' : 'xpath=',
+        	x, useXpath;
+        
+        // check xpath and url
+        for(x in PG.User.data.taxonomy.items) { 
+        	useXpath = false;
+        	
+        	if(PG.Util.not_null(PG.User.data.taxonomy.items[x].url)
+        		&& PG.Util.not_null(PG.User.data.taxonomy.items[x].xpath)
+        			&& PG.Util.matchUrl(PG.User.data.taxonomy.items[x].url)
+        				&& PG.Util.not_null(PG.User.data.taxonomy.items[x].xpath)) {
+        		useXpath = true;
+    		}else if(PG.Util.not_null(PG.User.data.taxonomy.items[x].url)
+        		&& PG.Util.matchUrl(PG.User.data.taxonomy.items[x].url)) {
+        		useXpath = true;
+        	}else if(PG.Util.not_null(PG.User.data.taxonomy.items[x].xpath)
+        		&& PG.Util.checkXpath(PG.User.data.taxonomy.items[x].xpath)) {
+        		useXpath = true;
+        	}
+        	
+        	if(useXpath) {
+        		validXpath += (validXpath === 'xpath=')
+        			? PG.User.data.taxonomy.items[x].id
+        				: '+' + PG.User.data.taxonomy.items[x].id;
+        	}
+        }
+        
+        
+        if(validUrl && validXpath !== 'xpath=') {
             var userUrl = PG.Cache.protocol + PG.Cache.config.env[PG.Cache.config.mode].url + PG.Cache.config.env[PG.Cache.config.mode].send + '?apiKey='
-                + PG.Cache.settings.apiKey + '&url=' + url + '&uid=' + PG.User.uid;
+                + PG.Cache.settings.apiKey + '&url=' + url + '&uid=' + PG.User.uid + validXpath;
             
             PG.Util.log('send url : ' + userUrl);
             

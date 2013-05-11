@@ -332,7 +332,37 @@ pl.ready(function ()
             }
            
             return obj;
-       }
+		},
+       
+       /**
+        * polyfill function to trigger custom event
+	    * @function
+	    * 
+	    * @name PG.Util.fireEvtd
+	    * 
+        * @param {String} name of the event
+        * @param {Object} dom element to trigger the event (use window)
+        * @param {Object} data send to the event handler
+        * @return {null}
+        * 
+	    * @this {Util}
+	    * 
+	    * @example
+	    * PG.Util.fireEvt( {String} name, {Object} window, {Object} data)
+	    * 
+	    * @since version 1.0.0
+        */
+		fireEvt: function (type, obj, data)
+		{ 
+			if(window.dispatchEvent) {
+				var event = document.createEvent('Event');
+				event.initEvent(type, true, true);
+				event.data = data;
+				obj.dispatchEvent(event);
+			}else if(window.fireEvent) {
+	        	obj.fireEvent(type);
+			}
+		}
     };
     
     // put the util into Adfab.Playground.Util

@@ -29,7 +29,7 @@ var Adfab = Adfab || {},
 	/** Application settings, need to be fill by partner
 	 * @constant _plgd_settings 
 	 */
-    _plgd_settings = _plgd_settings || {},
+    _pg = _pg || {},
     
 	/** Application config, need to be fill by developper
 	 * @constant pl_config 

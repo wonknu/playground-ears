@@ -56,7 +56,7 @@ pl.ready(function ()
         
         // check api key
         if(PG.Util.not_null(PG.Cache.settings) && PG.Util.not_null(PG.Cache.settings.apiKey)) {
-            PG.User.env = _plgd_settings;
+            //PG.User.env = _plgd_settings;
             PG.Util.log('APIKEY FOUND = ' + PG.Cache.settings.apiKey);
         }else {
             PG.Util.log('NOT APIKEY FOUND');
@@ -66,6 +66,16 @@ pl.ready(function ()
         PG.App.easyXDM();
         PG.App.bindEvent();
         PG.User.init();
+        
+        PG.Util.fireEvt(
+        	'earsReady',
+        	window,
+        	{
+        		apiKey: PG.Cache.settings.apiKey,
+        		uid: PG.User.uid,
+        		login: PG.User.id
+    		}
+		);
     };
     
     /**

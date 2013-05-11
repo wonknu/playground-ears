@@ -70,7 +70,7 @@ pl.ready(function ()
 		 * @constant PG.Cache.settings 
 		 * @type Object
 		 */
-        settings: _plgd_settings,
+        settings: _pg,
 		/** check if localstorage is available in the current device
 		 * @name  PG.Cache.localstorage
 		 * @constant PG.Cache.localstorage 

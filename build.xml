@@ -1,20 +1,25 @@
 <?xml version="1.0"?>
 <project basedir="." default="compile">
     
-    <taskdef name="jscomp" classname="com.google.javascript.jscomp.ant.CompileTask" classpath="../build/compiler.jar"/>
+    <taskdef name="jscomp" classname="com.google.javascript.jscomp.ant.CompileTask" classpath="build/compiler.jar"/>
         
     <target name="compile">
         
         <jscomp compilationLevel="simple"
     		warning="quiet"
     			debug="false"
-					output="../js/ears.min.js">
+					output="js/ears.min.js">
             
-        	<sources dir="../easyXDM">
+        	<sources dir="easyXDM">
                	<file name="easyXDM.min.js"/>
+               	<file name="json2.js"/>
+            </sources>
+            
+            <sources dir="js/lib">
+    	        <file name="wgxpath.install.js"/>
             </sources>
         
-            <sources dir="../js">
+            <sources dir="js">
     	        <file name="config.js"/>
     	        <file name="ready.js"/>
     	        <file name="namespace.js"/>

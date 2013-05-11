@@ -33,7 +33,7 @@
 <span class='line'> 26</span> </span><span class="WHIT">	
 <span class='line'> 27</span>     </span><span class="COMM">/** App Object
 <span class='line'> 28</span>      * @class
-<span class='line'> 29</span>      * @name NS.App
+<span class='line'> 29</span>      * @name PG.App
 <span class='line'> 30</span>      */</span><span class="WHIT">
 <span class='line'> 31</span> </span><span class="WHIT">    </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">App</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT">
 <span class='line'> 32</span> </span><span class="WHIT">    </span><span class="PUNC">{</span><span class="WHIT">
@@ -45,7 +45,7 @@
 <span class='line'> 38</span>      * This method create the namespace used all over the application
 <span class='line'> 39</span>      * @function
 <span class='line'> 40</span>      * 
-<span class='line'> 41</span>      * @name NS.App.init
+<span class='line'> 41</span>      * @name PG.App.init
 <span class='line'> 42</span>      * 
 <span class='line'> 43</span>      * @param {null} no params
 <span class='line'> 44</span>      * @return {null} no return
@@ -59,27 +59,27 @@
 <span class='line'> 52</span> </span><span class="WHIT">    </span><span class="NAME">App.prototype.init</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT">
 <span class='line'> 53</span> </span><span class="WHIT">    </span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'> 54</span> </span><span class="WHIT">        </span><span class="COMM">// Namespace</span><span class="WHIT">
-<span class='line'> 55</span> </span><span class="WHIT">        </span><span class="NAME">NS</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Adfab.Playground</span><span class="PUNC">;</span><span class="WHIT"> 
+<span class='line'> 55</span> </span><span class="WHIT">        </span><span class="NAME">PG</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Adfab.Playground</span><span class="PUNC">;</span><span class="WHIT"> 
 <span class='line'> 56</span>         
 <span class='line'> 57</span>         </span><span class="COMM">// check api key</span><span class="WHIT">
-<span class='line'> 58</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">NS.Util.not_null</span><span class="PUNC">(</span><span class="NAME">NS.Cache.settings</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">NS.Util.not_null</span><span class="PUNC">(</span><span class="NAME">NS.Cache.settings.apiKey</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 59</span> </span><span class="WHIT">            </span><span class="NAME">NS.User.env</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">_plgd_settings</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 60</span> </span><span class="WHIT">            </span><span class="NAME">NS.Util.log</span><span class="PUNC">(</span><span class="STRN">'APIKEY FOUND = '</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">NS.Cache.settings.apiKey</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 58</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">PG.Util.not_null</span><span class="PUNC">(</span><span class="NAME">PG.Cache.settings</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">PG.Util.not_null</span><span class="PUNC">(</span><span class="NAME">PG.Cache.settings.apiKey</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 59</span> </span><span class="WHIT">            </span><span class="NAME">PG.User.env</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">_plgd_settings</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 60</span> </span><span class="WHIT">            </span><span class="NAME">PG.Util.log</span><span class="PUNC">(</span><span class="STRN">'APIKEY FOUND = '</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">PG.Cache.settings.apiKey</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 61</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 62</span> </span><span class="WHIT">            </span><span class="NAME">NS.Util.log</span><span class="PUNC">(</span><span class="STRN">'NOT APIKEY FOUND'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 62</span> </span><span class="WHIT">            </span><span class="NAME">PG.Util.log</span><span class="PUNC">(</span><span class="STRN">'NOT APIKEY FOUND'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 63</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 64</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'> 65</span> </span><span class="WHIT">        
-<span class='line'> 66</span>         </span><span class="NAME">NS.App.easyXDM</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 67</span> </span><span class="WHIT">        </span><span class="NAME">NS.App.bindEvent</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 68</span> </span><span class="WHIT">        </span><span class="NAME">NS.User.init</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 66</span>         </span><span class="NAME">PG.App.easyXDM</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 67</span> </span><span class="WHIT">        </span><span class="NAME">PG.App.bindEvent</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 68</span> </span><span class="WHIT">        </span><span class="NAME">PG.User.init</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 69</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 70</span> </span><span class="WHIT">    
 <span class='line'> 71</span>     </span><span class="COMM">/**
 <span class='line'> 72</span>      * Bind the event to track user move
 <span class='line'> 73</span>      * @function
 <span class='line'> 74</span>      * 
-<span class='line'> 75</span>      * @name NS.App.bindEvent
+<span class='line'> 75</span>      * @name PG.App.bindEvent
 <span class='line'> 76</span>      * 
 <span class='line'> 77</span>      * @param {null} no params
 <span class='line'> 78</span>      * @return {null} no return
@@ -94,11 +94,11 @@
 <span class='line'> 87</span> </span><span class="WHIT">    </span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'> 88</span> </span><span class="WHIT">        </span><span class="COMM">// AJAX</span><span class="WHIT">
 <span class='line'> 89</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">xhrListn</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Object</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 90</span> </span><span class="WHIT">            </span><span class="NAME">xhrListn.open</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">NS.Cache.xmlhttp.prototype.open</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 91</span> </span><span class="WHIT">            </span><span class="NAME">xhrListn.send</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">NS.Cache.xmlhttp.prototype.send</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 90</span> </span><span class="WHIT">            </span><span class="NAME">xhrListn.open</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">PG.Cache.xmlhttp.prototype.open</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 91</span> </span><span class="WHIT">            </span><span class="NAME">xhrListn.send</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">PG.Cache.xmlhttp.prototype.send</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 92</span> </span><span class="WHIT">        
 <span class='line'> 93</span>         </span><span class="COMM">// Catch all the xhr open event</span><span class="WHIT">
-<span class='line'> 94</span> </span><span class="WHIT">        </span><span class="NAME">NS.Cache.xmlhttp.prototype.open</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">a</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">b</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 94</span> </span><span class="WHIT">        </span><span class="NAME">PG.Cache.xmlhttp.prototype.open</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">a</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">b</span><span class="PUNC">)</span><span class="WHIT">
 <span class='line'> 95</span> </span><span class="WHIT">        </span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'> 96</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">a</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">a</span><span class="PUNC">=</span><span class="STRN">''</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 97</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">b</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">b</span><span class="PUNC">=</span><span class="STRN">''</span><span class="PUNC">;</span><span class="WHIT">
@@ -113,7 +113,7 @@
 <span class='line'>106</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>107</span> </span><span class="WHIT">        
 <span class='line'>108</span>         </span><span class="COMM">// Catch all the xhr send event</span><span class="WHIT">
-<span class='line'>109</span> </span><span class="WHIT">        </span><span class="NAME">NS.Cache.xmlhttp.prototype.send</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">a</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">b</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>109</span> </span><span class="WHIT">        </span><span class="NAME">PG.Cache.xmlhttp.prototype.send</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">a</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">b</span><span class="PUNC">)</span><span class="WHIT">
 <span class='line'>110</span> </span><span class="WHIT">        </span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'>111</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">a</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">a</span><span class="PUNC">=</span><span class="STRN">''</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>112</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">b</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">b</span><span class="PUNC">=</span><span class="STRN">''</span><span class="PUNC">;</span><span class="WHIT">
@@ -122,16 +122,16 @@
 <span class='line'>115</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>116</span> </span><span class="WHIT">        
 <span class='line'>117</span>         </span><span class="COMM">// Catch all the load finished event</span><span class="WHIT">
-<span class='line'>118</span> </span><span class="WHIT">        </span><span class="NAME">NS.Cache.document.onreadystatechange</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>118</span> </span><span class="WHIT">        </span><span class="NAME">PG.Cache.document.onreadystatechange</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">)</span><span class="WHIT">
 <span class='line'>119</span> </span><span class="WHIT">        </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>120</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">NS.Util.not_null</span><span class="PUNC">(</span><span class="NAME">e.data</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">e.data</span><span class="WHIT"> </span><span class="PUNC">!=</span><span class="WHIT"> </span><span class="STRN">''</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>121</span> </span><span class="WHIT">                </span><span class="NAME">NS.App.send</span><span class="PUNC">(</span><span class="NAME">e.data</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>120</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">PG.Util.not_null</span><span class="PUNC">(</span><span class="NAME">e.data</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">e.data</span><span class="WHIT"> </span><span class="PUNC">!=</span><span class="WHIT"> </span><span class="STRN">''</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>121</span> </span><span class="WHIT">                </span><span class="NAME">PG.App.send</span><span class="PUNC">(</span><span class="NAME">e.data</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>122</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'>123</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>124</span> </span><span class="WHIT">        
-<span class='line'>125</span>         </span><span class="NAME">NS.Cache.window.onbeforeunload</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>125</span>         </span><span class="NAME">PG.Cache.window.onbeforeunload</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">)</span><span class="WHIT">
 <span class='line'>126</span> </span><span class="WHIT">        </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>127</span> </span><span class="WHIT">            </span><span class="NAME">NS.User.quit</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>127</span> </span><span class="WHIT">            </span><span class="NAME">PG.User.quit</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>128</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>129</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>130</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
@@ -141,7 +141,7 @@
 <span class='line'>134</span>      * Using easyXDM as RPC mode
 <span class='line'>135</span>      * @function
 <span class='line'>136</span>      * 
-<span class='line'>137</span>      * @name NS.App.easyXDM
+<span class='line'>137</span>      * @name PG.App.easyXDM
 <span class='line'>138</span>      * 
 <span class='line'>139</span>      * @param {null} no params
 <span class='line'>140</span>      * @return {null} no return
@@ -154,14 +154,14 @@
 <span class='line'>147</span>      */</span><span class="WHIT">
 <span class='line'>148</span> </span><span class="WHIT">    </span><span class="NAME">App.prototype.easyXDM</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT">
 <span class='line'>149</span> </span><span class="WHIT">    </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>150</span> </span><span class="WHIT">        </span><span class="NAME">NS.App.rpc</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">easyXDM.Rpc</span><span class="PUNC">(</span><span class="WHIT">
+<span class='line'>150</span> </span><span class="WHIT">        </span><span class="NAME">PG.App.rpc</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">easyXDM.Rpc</span><span class="PUNC">(</span><span class="WHIT">
 <span class='line'>151</span> </span><span class="WHIT">        </span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'>152</span> </span><span class="WHIT">            </span><span class="COMM">// fallback NameTransport</span><span class="WHIT">
-<span class='line'>153</span> </span><span class="WHIT">            </span><span class="NAME">local</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">NS.Cache.protocol</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">NS.Cache.config.url</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"easyXDM/name.html"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>153</span> </span><span class="WHIT">            </span><span class="NAME">local</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">PG.Cache.protocol</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">PG.Cache.config.url</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"easyXDM/name.html"</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>154</span> </span><span class="WHIT">            </span><span class="COMM">// fallback swf</span><span class="WHIT">
-<span class='line'>155</span> </span><span class="WHIT">            </span><span class="NAME">swf</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">NS.Cache.protocol</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">NS.Cache.config.url</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"easyXDM/easyxdm.swf"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>155</span> </span><span class="WHIT">            </span><span class="NAME">swf</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">PG.Cache.protocol</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">PG.Cache.config.url</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"easyXDM/easyxdm.swf"</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>156</span> </span><span class="WHIT">            </span><span class="COMM">// page to load</span><span class="WHIT">
-<span class='line'>157</span> </span><span class="WHIT">            </span><span class="NAME">remote</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">NS.Cache.protocol</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">NS.Cache.config.url</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"index.html"</span><span class="WHIT">
+<span class='line'>157</span> </span><span class="WHIT">            </span><span class="NAME">remote</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">PG.Cache.protocol</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">PG.Cache.config.url</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"index.html"</span><span class="WHIT">
 <span class='line'>158</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>159</span> </span><span class="WHIT">        </span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'>160</span> </span><span class="WHIT">            </span><span class="NAME">remote</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
@@ -174,7 +174,7 @@
 <span class='line'>167</span>      * Send a request to easyXDM using RPC with no return
 <span class='line'>168</span>      * @function
 <span class='line'>169</span>      * 
-<span class='line'>170</span>      * @name NS.App.send
+<span class='line'>170</span>      * @name PG.App.send
 <span class='line'>171</span>      * 
 <span class='line'>172</span>      * @param {string} url of the service
 <span class='line'>173</span>      * @return {Boolean} valid url
@@ -182,30 +182,30 @@
 <span class='line'>175</span>      * @this {App}
 <span class='line'>176</span>      * 
 <span class='line'>177</span>      * @example
-<span class='line'>178</span>      * NS.App.send( {String} url)
+<span class='line'>178</span>      * PG.App.send( {String} url)
 <span class='line'>179</span>      * 
 <span class='line'>180</span>      * @since version 1.0.0
 <span class='line'>181</span>      */</span><span class="WHIT">
 <span class='line'>182</span> </span><span class="WHIT">    </span><span class="NAME">App.prototype.send</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">url</span><span class="PUNC">)</span><span class="WHIT">
 <span class='line'>183</span> </span><span class="WHIT">    </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>184</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">validUrl</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">NS.Util.isUrlValid</span><span class="PUNC">(</span><span class="NAME">url</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>184</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">validUrl</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">PG.Util.isUrlValid</span><span class="PUNC">(</span><span class="NAME">url</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>185</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">validUrl</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>186</span> </span><span class="WHIT">            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">userUrl</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">NS.Cache.protocol</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">NS.Cache.config.url</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'send.php?apiKey='</span><span class="WHIT">
-<span class='line'>187</span> </span><span class="WHIT">                </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">NS.Cache.settings.apiKey</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'&url='</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">url</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'&uid='</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">NS.User.uid</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>186</span> </span><span class="WHIT">            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">userUrl</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">PG.Cache.protocol</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">PG.Cache.config.url</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">PG.Cache.config.send</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'?apiKey='</span><span class="WHIT">
+<span class='line'>187</span> </span><span class="WHIT">                </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">PG.Cache.settings.apiKey</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'&url='</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">url</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'&uid='</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">PG.User.uid</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>188</span> </span><span class="WHIT">            
-<span class='line'>189</span>             </span><span class="NAME">NS.Util.log</span><span class="PUNC">(</span><span class="STRN">'send url : '</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">userUrl</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>189</span>             </span><span class="NAME">PG.Util.log</span><span class="PUNC">(</span><span class="STRN">'send url : '</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">userUrl</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>190</span> </span><span class="WHIT">            
-<span class='line'>191</span>             </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">NS.User.isLogged</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>192</span> </span><span class="WHIT">                </span><span class="NAME">userUrl</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'&login='</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">NS.User.id</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>191</span>             </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">PG.User.isLogged</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>192</span> </span><span class="WHIT">                </span><span class="NAME">userUrl</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'&login='</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">PG.User.id</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>193</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'>194</span> </span><span class="WHIT">            
-<span class='line'>195</span>             </span><span class="NAME">NS.App.rpc.request</span><span class="PUNC">(</span><span class="WHIT">
+<span class='line'>195</span>             </span><span class="NAME">PG.App.rpc.request</span><span class="PUNC">(</span><span class="WHIT">
 <span class='line'>196</span> </span><span class="WHIT">                </span><span class="PUNC">{</span><span class="WHIT"> 
 <span class='line'>197</span>                     </span><span class="NAME">url</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">userUrl</span><span class="WHIT">
 <span class='line'>198</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>199</span> </span><span class="WHIT">                </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">rpcdata</span><span class="PUNC">)</span><span class="WHIT">
 <span class='line'>200</span> </span><span class="WHIT">                </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>201</span> </span><span class="WHIT">                    </span><span class="NAME">NS.Util.log</span><span class="PUNC">(</span><span class="NAME">rpcdata</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>201</span> </span><span class="WHIT">                    </span><span class="NAME">PG.Util.log</span><span class="PUNC">(</span><span class="NAME">rpcdata</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>202</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>203</span> </span><span class="WHIT">                </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">error</span><span class="PUNC">)</span><span class="WHIT">
 <span class='line'>204</span> </span><span class="WHIT">                </span><span class="PUNC">{</span><span class="WHIT">
@@ -214,13 +214,13 @@
 <span class='line'>207</span> </span><span class="WHIT">            </span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>208</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'>209</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">validUrl</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>210</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>211</span> </span><span class="WHIT">    
+<span class='line'>210</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT"> 
+<span class='line'>211</span>     
 <span class='line'>212</span>     </span><span class="COMM">/**
 <span class='line'>213</span>      * Send a request to easyXDM using RPC waiting for a json return
 <span class='line'>214</span>      * @function
 <span class='line'>215</span>      * 
-<span class='line'>216</span>      * @name NS.App.call
+<span class='line'>216</span>      * @name PG.App.call
 <span class='line'>217</span>      * 
 <span class='line'>218</span>      * @param {string} serviceName
 <span class='line'>219</span>      * @return {Object} promise
@@ -230,20 +230,20 @@
 <span class='line'>223</span>      * @throws {requestError} service cannot be called
 <span class='line'>224</span>      * 
 <span class='line'>225</span>      * @example
-<span class='line'>226</span>      * NS.App.call( {String} service )
+<span class='line'>226</span>      * PG.App.call( {String} service )
 <span class='line'>227</span>      * .then( {Function} callback)
 <span class='line'>228</span>      * 
 <span class='line'>229</span>      * @since version 1.0.0
 <span class='line'>230</span>      */</span><span class="WHIT">
 <span class='line'>231</span> </span><span class="WHIT">    </span><span class="NAME">App.prototype.call</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">s</span><span class="PUNC">)</span><span class="WHIT">
 <span class='line'>232</span> </span><span class="WHIT">    </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>233</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">promise</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">NS.Promise</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>233</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">promise</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">PG.Promise</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>234</span> </span><span class="WHIT">        
-<span class='line'>235</span>         </span><span class="NAME">NS.Util.log</span><span class="PUNC">(</span><span class="STRN">'call service : '</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">s</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>235</span>         </span><span class="NAME">PG.Util.log</span><span class="PUNC">(</span><span class="STRN">'call service : '</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">s</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>236</span> </span><span class="WHIT">        
-<span class='line'>237</span>         </span><span class="NAME">NS.App.rpc.request</span><span class="PUNC">(</span><span class="WHIT">
+<span class='line'>237</span>         </span><span class="NAME">PG.App.rpc.request</span><span class="PUNC">(</span><span class="WHIT">
 <span class='line'>238</span> </span><span class="WHIT">            </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>239</span> </span><span class="WHIT">                </span><span class="NAME">url</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">NS.Cache.protocol</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">NS.Cache.config.url</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">s</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'?apiKey='</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">NS.Cache.settings.apiKey</span><span class="WHIT">
+<span class='line'>239</span> </span><span class="WHIT">                </span><span class="NAME">url</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">PG.Cache.protocol</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">PG.Cache.config.url</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">s</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'?apiKey='</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">PG.Cache.settings.apiKey</span><span class="WHIT">
 <span class='line'>240</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>241</span> </span><span class="WHIT">            </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">rpcdata</span><span class="PUNC">)</span><span class="WHIT">
 <span class='line'>242</span> </span><span class="WHIT">            </span><span class="PUNC">{</span><span class="WHIT">

@@ -26,7 +26,7 @@ pl.ready(function ()
 	
     /** Util Object
      * @class
-     * @name NS.Util
+     * @name PG.Util
      */
     var util = {
         
@@ -34,7 +34,7 @@ pl.ready(function ()
          * Check if a variable is null
 	     * @function
          * 
-	     * @name NS.Util.not_null
+	     * @name PG.Util.not_null
 	     * 
          * @param {Object} object DOM object
          * @return {boolean} bool true or false
@@ -42,7 +42,7 @@ pl.ready(function ()
 	     * @this {Util}
 	     * 
 	     * @example
-	     * NS.Util.not_null( Object | String | ... )
+	     * PG.Util.not_null( Object | String | ... )
 	     * 
 	     * @since version 1.0.0
          */
@@ -57,7 +57,7 @@ pl.ready(function ()
          * Return the content of the given tag
 	     * @function
          * 
-	     * @name NS.Util.getValueFromObject
+	     * @name PG.Util.getValueFromObject
 	     * 
          * @param {Object} DOM Object
          * @return {String} value
@@ -65,7 +65,7 @@ pl.ready(function ()
 	     * @this {Util}
 	     * 
 	     * @example
-	     * NS.Util.getValueFromObject( Object | String | ... )
+	     * PG.Util.getValueFromObject( Object | String | ... )
 	     * 
 	     * @since version 1.0.0
          */
@@ -74,7 +74,7 @@ pl.ready(function ()
             'use strict';
             
             var value = '';
-            if(NS.Util.not_null(obj) && typeof obj == 'object' && obj.type != undefined) {
+            if(PG.Util.not_null(obj) && typeof obj == 'object' && obj.type != undefined) {
                 if(obj.value != undefined) {
                     value = obj.value;
                 }else if(obj.innerHTML != undefined) {
@@ -88,7 +88,7 @@ pl.ready(function ()
          * Create a cookie under Adfab.Playground.[ name ]
 	     * @function
 	     * 
-	     * @name NS.Util.createCookie
+	     * @name PG.Util.createCookie
 	     * 
          * @param {String} name
          * @param {String} value
@@ -98,7 +98,7 @@ pl.ready(function ()
 	     * @this {Util}
 	     * 
 	     * @example
-	     * NS.Util.createCookie( {String} name, {String} value, [ {Number} days ])
+	     * PG.Util.createCookie( {String} name, {String} value, [ {Number} days ])
 	     * 
 	     * @since version 1.0.0
          */
@@ -107,8 +107,8 @@ pl.ready(function ()
             'use strict';
             
             // if localstorage enabled
-            if(NS.Cache.localstorage) {
-            	localStorage.setItem(NS.Cache.config.ns + '.' + name, value);
+            if(PG.Cache.localstorage) {
+            	localStorage.setItem(PG.Cache.config.ns + '.' + name, value);
         	// if localstorage not enable use cookies as polyfill
             }else {
 	            if (days) {
@@ -117,7 +117,7 @@ pl.ready(function ()
 	                var expires = "; expires=" + date.toGMTString();
 	            }
 	            else var expires = "";
-	            document.cookie = NS.Cache.config.ns + '.' + name + "=" + encodeURIComponent(value) + expires + "; path=/";
+	            document.cookie = PG.Cache.config.ns + '.' + name + "=" + encodeURIComponent(value) + expires + "; path=/";
             }
         },
         
@@ -125,7 +125,7 @@ pl.ready(function ()
          * Get value of a cookie
 	     * @function
 	     * 
-	     * @name NS.Util.readCookie
+	     * @name PG.Util.readCookie
 	     * 
          * @param {String} name
          * @return {String} | {null} value of the cookie
@@ -133,7 +133,7 @@ pl.ready(function ()
 	     * @this {Util}
 	     * 
 	     * @example
-	     * NS.Util.readCookie( {String} name)
+	     * PG.Util.readCookie( {String} name)
 	     * 
 	     * @since version 1.0.0
          */
@@ -142,11 +142,11 @@ pl.ready(function ()
             'use strict';
             
             // if localstorage enabled
-            if(NS.Cache.localstorage) {
-            	return localStorage.getItem(NS.Cache.config.ns + '.' + name);
+            if(PG.Cache.localstorage) {
+            	return localStorage.getItem(PG.Cache.config.ns + '.' + name);
         	// if localstorage not enable use cookies as polyfill
             }else {
-	            var nameEQ = NS.Cache.config.ns + '.' + name + "=",
+	            var nameEQ = PG.Cache.config.ns + '.' + name + "=",
 	                ca = document.cookie.split(';'),
 	                i = 0,
 	                c = '';
@@ -164,7 +164,7 @@ pl.ready(function ()
          * Delete a cookie
 	     * @function
 	     * 
-	     * @name NS.Util.eraseCookie
+	     * @name PG.Util.eraseCookie
 	     * 
          * @param {String} name
          * @return {null} no return
@@ -172,7 +172,7 @@ pl.ready(function ()
 	     * @this {Util}
 	     * 
 	     * @example
-	     * NS.Util.readCookie( {String} name)
+	     * PG.Util.readCookie( {String} name)
 	     * 
 	     * @since version 1.0.0
          */
@@ -181,12 +181,12 @@ pl.ready(function ()
             'use strict';
             
             // if localstorage enabled
-            if(NS.Cache.localstorage) {
-            	return localStorage.removeItem(NS.Cache.config.ns + '.' + name);
+            if(PG.Cache.localstorage) {
+            	return localStorage.removeItem(PG.Cache.config.ns + '.' + name);
         	// if localstorage not enable use cookies as polyfill
             }else {
 	            var expires = 'expires=Thu, 01 Jan 1970 00:00:01 GMT';
-	            document.cookie = NS.Cache.config.ns + '.' + name + "=''; " + expires + "; path=/";
+	            document.cookie = PG.Cache.config.ns + '.' + name + "=''; " + expires + "; path=/";
 			}
         },
         
@@ -194,7 +194,7 @@ pl.ready(function ()
          * Tell if input URL match current URL
 	     * @function
 	     * 
-	     * @name NS.Util.matchUrl
+	     * @name PG.Util.matchUrl
 	     * 
          * @param {String} url
          * @return {Boolean} bool true or false
@@ -202,7 +202,7 @@ pl.ready(function ()
 	     * @this {Util}
 	     * 
 	     * @example
-	     * NS.Util.matchUrl( {String} url)
+	     * PG.Util.matchUrl( {String} url)
 	     * 
 	     * @since version 1.0.0
          */
@@ -223,21 +223,21 @@ pl.ready(function ()
 	     * @this {Util}
 	     * 
 	     * @example
-	     * NS.Util.isUrlValid( {String} url)
+	     * PG.Util.isUrlValid( {String} url)
 	     * 
 	     * @since version 1.0.0
          */
         isUrlValid: function (url)
         {
             'use strict';
-            return (NS.Cache.config.url.indexOf(url) >= 0) ? false : true;
+            return (PG.Cache.config.env[PG.Cache.config.mode].url.indexOf(url) >= 0) ? false : true;
         },
         
         /**
-         * log string if NS.Cache.Config.debug allow it
+         * log string if PG.Cache.Config.debug allow it
 	     * @function
 	     * 
-	     * @name NS.Util.log
+	     * @name PG.Util.log
 	     * 
          * @param {Object} str
          * @return {null}
@@ -245,13 +245,13 @@ pl.ready(function ()
 	     * @this {Util}
 	     * 
 	     * @example
-	     * NS.Util.log( {String} str)
+	     * PG.Util.log( {String} str)
 	     * 
 	     * @since version 1.0.0
          */
         log: function (str)
         {
-            if(NS.Cache.config.debug) {
+            if(PG.Cache.config.debug) {
                 console.log("%c> PLAYGROUND DEBUG ::", "color:blue; font-weight:bold;")
                 console.log(str)
             }
@@ -261,7 +261,7 @@ pl.ready(function ()
         * get dom element from object.selector and object.name
 	    * @function
 	    * 
-	    * @name NS.Util.getDomElemntFromItem
+	    * @name PG.Util.getDomElemntFromItem
 	    * 
         * @param {Object} item object with variable
         * @param item.selector type of the DOM element
@@ -271,7 +271,7 @@ pl.ready(function ()
 	    * @this {Util}
 	    * 
 	    * @example
-	    * NS.Util.getDomElemntFromItem( {String} it)
+	    * PG.Util.getDomElemntFromItem( {String} it)
 	    * 
 	    * @since version 1.0.0
         */

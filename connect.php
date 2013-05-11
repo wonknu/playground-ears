@@ -4,8 +4,8 @@ header('Content-type: application/json');
 {
     "login": {
         "urls": {
-            "page":"http://p.magento/index.php/customer/account/login/",
-            "success":"http://p.magento/index.php/customer/account/"
+            "page":"http://pmagento.dev/index.php/customer/account/login/",
+            "success":"http://pmagento.dev/index.php/customer/account/"
         },
         "items":
         [
@@ -17,8 +17,8 @@ header('Content-type: application/json');
     },
     "logout": {
         "urls": {
-            "page":"http://p.magento/",
-            "success":"http://p.magento/index.php/customer/account/logoutSuccess/"
+            "page":"http://pmagento.dev/",
+            "success":"http://pmagento.dev/index.php/customer/account/logoutSuccess/"
         }
     }
 }

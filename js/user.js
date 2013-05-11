@@ -21,7 +21,7 @@ pl.ready(function ()
     
     /** User Object
      * @class
-     * @name NS.User
+     * @name PG.User
      */
     var user = {
         
@@ -38,7 +38,7 @@ pl.ready(function ()
          * Init the user object
          * @function
 	     * 
-	     * @name NS.User.init
+	     * @name PG.User.init
 	     * 
          * @param {null}
          * @return {null}
@@ -51,19 +51,19 @@ pl.ready(function ()
          */ 
         init: function ()
         {
-            NS.User.GenerateUniqueId();
-            NS.User.urls.prev = NS.Util.readCookie('prev-url');
+            PG.User.GenerateUniqueId();
+            PG.User.urls.prev = PG.Util.readCookie('prev-url');
             
-            var authent = NS.Util.readCookie('authent');
-            if(!NS.Util.not_null(authent)) {
-            	NS.User.loadAuthent()
+            var authent = PG.Util.readCookie('authent');
+            if(!PG.Util.not_null(authent)) {
+            	PG.User.loadAuthent()
             	.then(function ()
             	{
-                	NS.User.checkUser();
+                	PG.User.checkUser();
             	});
             }else {
-                NS.User.data = JSON.parse(NS.Util.readCookie('authent'));
-            	NS.User.checkUser();
+                PG.User.data = JSON.parse(PG.Util.readCookie('authent'));
+            	PG.User.checkUser();
             }
         },
         
@@ -71,7 +71,7 @@ pl.ready(function ()
          * check on cookie if user is logged
          * @function
 	     * 
-	     * @name NS.User.isLogged
+	     * @name PG.User.isLogged
 	     * 
          * @param {null} 
          * @return {Boolean} bool true or false
@@ -79,29 +79,29 @@ pl.ready(function ()
 	     * @this {User}
 	     * 
 	     * @example
-	     * NS.User.isLogged()
+	     * PG.User.isLogged()
 	     * 
 	     * @since version 1.0.0
          */
         isLogged: function ()
         {
             var l;
-            if(NS.User.id === '' || NS.User.id === null) {
+            if(PG.User.id === '' || PG.User.id === null) {
                 // check
-                NS.User.id = NS.Util.readCookie('login');
+                PG.User.id = PG.Util.readCookie('login');
             }
-            l = (NS.Util.not_null(NS.User.id)) ? true : false;
-            NS.Util.log('isLogged : ' + l);
+            l = (PG.Util.not_null(PG.User.id)) ? true : false;
+            PG.Util.log('isLogged : ' + l);
             return l;
         },
         
         /**
          * Call service to get json data of logout user method
-         * put the return into NS.User.data
+         * put the return into PG.User.data
          * then call bindLogout
          * @function
 	     * 
-	     * @name NS.User.loadAuthent
+	     * @name PG.User.loadAuthent
 	     * 
          * @param {null}
          * @return {Object} promise
@@ -114,14 +114,14 @@ pl.ready(function ()
          */
         loadAuthent: function ()
         {
-        	var p = new NS.Promise();
+        	var p = new PG.Promise();
         	
-            NS.App.call( NS.Cache.config.connect )
+            PG.App.call( PG.Cache.config.connect )
             .then(
                 function (data)
                 {
-                    NS.User.data = data;
-                    NS.Util.createCookie('authent', JSON.stringify(data));
+                    PG.User.data = data;
+                    PG.Util.createCookie('authent', JSON.stringify(data));
                 	p.resolve();
                 }
             );
@@ -133,7 +133,7 @@ pl.ready(function ()
          * Check if the user is logged, logout, or tried to login/logout 
          * @function
 	     * 
-	     * @name NS.User.checkUser
+	     * @name PG.User.checkUser
 	     * 
          * @param {null}
          * @return {null}
@@ -146,27 +146,27 @@ pl.ready(function ()
          */
         checkUser: function ()
         {
-            if(NS.Util.not_null(NS.Util.readCookie('logout-try'))
-                && NS.Util.matchUrl(NS.User.data.logout.urls.success)) { // USER TRIED TO LOUGOUT
-                //NS.User.bindLogout();
-                if(NS.User.checkEvidences(NS.User.data.logout.evidences)) {
+            if(PG.Util.not_null(PG.Util.readCookie('logout-try'))
+                && PG.Util.matchUrl(PG.User.data.logout.urls.success)) { // USER TRIED TO LOUGOUT
+                //PG.User.bindLogout();
+                if(PG.User.checkEvidences(PG.User.data.logout.evidences)) {
                 	// IS OUT
-                	NS.User.logout();
+                	PG.User.logout();
                 }
-            }else if(NS.Util.not_null(NS.Util.readCookie('login-try'))
-                && NS.Util.matchUrl(NS.User.data.login.urls.success)) { // USER TRIED TO LOGIN
-                //NS.User.bindLogin();
-                if(NS.User.checkEvidences(NS.User.data.login.evidences)) {
+            }else if(PG.Util.not_null(PG.Util.readCookie('login-try'))
+                && PG.Util.matchUrl(PG.User.data.login.urls.success)) { // USER TRIED TO LOGIN
+                //PG.User.bindLogin();
+                if(PG.User.checkEvidences(PG.User.data.login.evidences)) {
                 	// IS IN
-                	NS.User.login(NS.Util.readCookie('login-try'));
+                	PG.User.login(PG.Util.readCookie('login-try'));
                 }else {
-                	NS.Util.eraseCookie('login-try')
+                	PG.Util.eraseCookie('login-try')
                 }
-            }else if(NS.Util.not_null(NS.Util.readCookie('login'))) { // USER IS ALREADY LOGGED
-                //NS.User.bindLogout();
-                NS.User.login(NS.Util.readCookie('login'));
+            }else if(PG.Util.not_null(PG.Util.readCookie('login'))) { // USER IS ALREADY LOGGED
+                //PG.User.bindLogout();
+                PG.User.login(PG.Util.readCookie('login'));
             }else { // USER IS LOGGED OUT
-                NS.User.logout();
+                PG.User.logout();
             }
         },
          
@@ -176,41 +176,41 @@ pl.ready(function ()
          * then return the login
          * @function
 	     * 
-	     * @name NS.User.login
+	     * @name PG.User.login
 	     * 
          * @param {String} str (optional) if not set just return the login
-         * @return {String} NS.User.data.id
+         * @return {String} PG.User.data.id
 	     * 
 	     * @this {User}
 	     * 
 	     * @example
-	     * NS.User.login( {String} username )
+	     * PG.User.login( {String} username )
 	     * 
 	     * @since version 1.0.0
          */
         login: function (str)
         {
-            NS.Util.log('Login "' + str + '"');
+            PG.Util.log('Login "' + str + '"');
             if(str !== null) {
-            	NS.Util.eraseCookie('login-try')
-                NS.User.id = str;
-                NS.Util.createCookie('login', str); 
+            	PG.Util.eraseCookie('login-try')
+                PG.User.id = str;
+                PG.Util.createCookie('login', str); 
                 
                 // so bind logout
-                if(!NS.Util.not_null(NS.User.data.urls)) {
-                    //NS.User.loadLogout();
+                if(!PG.Util.not_null(PG.User.data.urls)) {
+                    //PG.User.loadLogout();
                 }
-                NS.App.send(top.location.href);
+                PG.App.send(top.location.href);
             }
             
-            return NS.User.data.id;
+            return PG.User.data.id;
         },
         
         /**
          * force logout user, then call loadLogin since user is logged out
          * @function
 	     * 
-	     * @name NS.User.logout
+	     * @name PG.User.logout
 	     * 
          * @param {null} 
          * @return {null}
@@ -218,24 +218,24 @@ pl.ready(function ()
 	     * @this {User}
 	     * 
 	     * @example
-	     * NS.User.logout()
+	     * PG.User.logout()
 	     * 
 	     * @since version 1.0.0
          */
         logout: function ()
         {
-            NS.Util.log('User is out');
-            NS.Util.eraseCookie('logout-try');
-            NS.Util.eraseCookie('login');
-            NS.User.id = null;
-            NS.App.send(top.location.href);
+            PG.Util.log('User is out');
+            PG.Util.eraseCookie('logout-try');
+            PG.Util.eraseCookie('login');
+            PG.User.id = null;
+            PG.App.send(top.location.href);
         },
         
         /**
          * Generate unique id for anonymous user
          * @function
          * 
-	     * @name NS.User.GenerateUniqueId
+	     * @name PG.User.GenerateUniqueId
 	     * 
          * @param {null}
          * @return {String} id
@@ -243,18 +243,18 @@ pl.ready(function ()
 	     * @this {User}
 	     * 
 	     * @example
-	     * NS.User.GenerateUniqueId()
+	     * PG.User.GenerateUniqueId()
 	     * 
 	     * @since version 1.0.0
          */
         GenerateUniqueId: function ()
         {
-            var uui = NS.Util.readCookie('unique-id');
-            if(!NS.Util.not_null(uui)) {
+            var uui = PG.Util.readCookie('unique-id');
+            if(!PG.Util.not_null(uui)) {
                 uui = 'body_' + new Date().getTime();
-                NS.Util.createCookie('unique-id', uui);
+                PG.Util.createCookie('unique-id', uui);
             }
-            NS.User.uid = uui;
+            PG.User.uid = uui;
             return uui;
         },
         
@@ -262,7 +262,7 @@ pl.ready(function ()
          * Check evidences for current user.evidences object
          * @function
          * 
-	     * @name NS.User.checkEvidences
+	     * @name PG.User.checkEvidences
 	     * 
          * @param {null}
          * @return {Boolean} result true | false
@@ -282,7 +282,7 @@ pl.ready(function ()
             for(it in evidences) {
                 if(evidences[it].selector === 'id') {
                     obj = document.getElementById(evidences[it].name);
-                }else if(NS.User.data.evidences[it].selector === 'class') {
+                }else if(PG.User.data.evidences[it].selector === 'class') {
                     obj = document.getElementsByClassName(evidences[it].name);
                 }
                 if(obj === null) {
@@ -298,7 +298,7 @@ pl.ready(function ()
          * make cookies 'login-try' and 'logout-try'
          * @function
          * 
-	     * @name NS.User.quit
+	     * @name PG.User.quit
 	     * 
          * @param {null}
          * @return {null}
@@ -314,23 +314,23 @@ pl.ready(function ()
             var it,
                 id = '';
             
-            NS.Util.createCookie('prev-url', top.location.href);
+            PG.Util.createCookie('prev-url', top.location.href);
         	
-            if(NS.Util.not_null(NS.User.data.login) && NS.Util.not_null(NS.User.data.logout)) {
+            if(PG.Util.not_null(PG.User.data.login) && PG.Util.not_null(PG.User.data.logout)) {
            		// check user is on login page 
-            	if(!NS.User.isLogged() && NS.Util.matchUrl(NS.User.data.login.urls.page)) {
-                    for(it in NS.User.data.login.items) {
-                        if(typeof NS.User.data.login.items[it] === 'object') {
+            	if(!PG.User.isLogged() && PG.Util.matchUrl(PG.User.data.login.urls.page)) {
+                    for(it in PG.User.data.login.items) {
+                        if(typeof PG.User.data.login.items[it] === 'object') {
                             id += (id !== '') ? ':' : '';
-                            id += NS.Util.getValueFromObject(
-                                NS.Util.getDomElemntFromItem(NS.User.data.login.items[it])
+                            id += PG.Util.getValueFromObject(
+                                PG.Util.getDomElemntFromItem(PG.User.data.login.items[it])
                             );
                         }
                     }
-                	NS.Util.createCookie('login-try', id);
+                	PG.Util.createCookie('login-try', id);
            	 	// check user is on logout page
-                }else if(NS.Util.matchUrl(NS.User.data.logout.urls.page)) {
-                	NS.Util.createCookie('logout-try', 'logout');
+                }else if(PG.Util.matchUrl(PG.User.data.logout.urls.page)) {
+                	PG.Util.createCookie('logout-try', 'logout');
                 }
             }
         }

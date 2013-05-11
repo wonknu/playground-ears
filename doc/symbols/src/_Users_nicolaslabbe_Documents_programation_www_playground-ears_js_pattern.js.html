@@ -44,17 +44,17 @@
 <span class='line'> 37</span>     </span><span class="COMM">/**
 <span class='line'> 38</span>      * Create a new instance of Promise pattern
 <span class='line'> 39</span>      * 
-<span class='line'> 40</span>      * @name NS.Promise
+<span class='line'> 40</span>      * @name PG.Promise
 <span class='line'> 41</span>      * @class
 <span class='line'> 42</span> 	 * @constructor
 <span class='line'> 43</span> 	 * 
 <span class='line'> 44</span> 	 * @param {null}
 <span class='line'> 45</span> 	 * @return {Object} this
 <span class='line'> 46</span>      * 
-<span class='line'> 47</span>      * @this {object} NS.Promise
+<span class='line'> 47</span>      * @this {object} PG.Promise
 <span class='line'> 48</span> 	 * 
 <span class='line'> 49</span> 	 * @example
-<span class='line'> 50</span> 	 * var p = new NS.Promise();
+<span class='line'> 50</span> 	 * var p = new PG.Promise();
 <span class='line'> 51</span> 	 * // call success callback
 <span class='line'> 52</span> 	 * p.resolve();
 <span class='line'> 53</span> 	 * // call error callback
@@ -81,15 +81,15 @@
 <span class='line'> 74</span> 	    </span><span class="COMM">/** function called when a promise is done
 <span class='line'> 75</span> 	     * 
 <span class='line'> 76</span> 	     * @function
-<span class='line'> 77</span> 	     * @name NS.Promise.then
+<span class='line'> 77</span> 	     * @name PG.Promise.then
 <span class='line'> 78</span> 	     * 
 <span class='line'> 79</span> 	     * @param {Function} success callback
 <span class='line'> 80</span> 	     * @param {Function} failure callback
 <span class='line'> 81</span> 	     * 
-<span class='line'> 82</span> 	     * @this {object} NS.Promise
+<span class='line'> 82</span> 	     * @this {object} PG.Promise
 <span class='line'> 83</span> 	     * 
 <span class='line'> 84</span> 	     * @example
-<span class='line'> 85</span> 	     * NS.Promise.then( {Function} success, {Function} error)
+<span class='line'> 85</span> 	     * PG.Promise.then( {Function} success, {Function} error)
 <span class='line'> 86</span> 	     * 
 <span class='line'> 87</span> 	     * @since version 1.0.0
 <span class='line'> 88</span> 	     */</span><span class="WHIT">
@@ -105,12 +105,12 @@
 <span class='line'> 98</span> 	     * never call this method, use then (success, failure)
 <span class='line'> 99</span> 	     * @function
 <span class='line'>100</span> 	     * 
-<span class='line'>101</span> 	     * @name NS.Promise.resolve
+<span class='line'>101</span> 	     * @name PG.Promise.resolve
 <span class='line'>102</span> 	     * 
 <span class='line'>103</span> 	     * @param {object} value
 <span class='line'>104</span> 	     * @return {null} no return
 <span class='line'>105</span> 	     * 
-<span class='line'>106</span> 	     * @this {object} NS.Promise
+<span class='line'>106</span> 	     * @this {object} PG.Promise
 <span class='line'>107</span> 	     * 
 <span class='line'>108</span> 	     * @ignore
 <span class='line'>109</span> 	     * 
@@ -127,12 +127,12 @@
 <span class='line'>120</span> 	     * never call this method, use then (success, failure)
 <span class='line'>121</span> 	     * @function
 <span class='line'>122</span> 	     * 
-<span class='line'>123</span> 	     * @name NS.Promise.reject
+<span class='line'>123</span> 	     * @name PG.Promise.reject
 <span class='line'>124</span> 	     * 
 <span class='line'>125</span> 	     * @param {object} value
 <span class='line'>126</span> 	     * @return {null} no return
 <span class='line'>127</span> 	     * 
-<span class='line'>128</span> 	     * @this {object} NS.Promise
+<span class='line'>128</span> 	     * @this {object} PG.Promise
 <span class='line'>129</span> 	     * 
 <span class='line'>130</span> 	     * @ignore
 <span class='line'>131</span> 	     * 

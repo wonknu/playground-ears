@@ -11,8 +11,6 @@
 
 	<target name="docs" description="Generates documentation">
 		<sequential>
-	        <delete dir="${doc.dir}"/>
-	        <mkdir dir="${doc.dir}" />
 
 	        <echo message="Running JSDoc Toolkit"/>
 

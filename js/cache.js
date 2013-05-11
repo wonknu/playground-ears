@@ -20,60 +20,60 @@ pl.ready(function ()
 	/**
 	 * Cache Object
 	 * @class
-     * @name NS.Cache
+     * @name PG.Cache
 	 */
     cache = {
 		/**
-		 * @name  NS.Cache.window
-		 * @constant NS.Cache.window
+		 * @name  PG.Cache.window
+		 * @constant PG.Cache.window
 		 * @type Object
 		 */
         window: window,
 		/**
-		 * @name  NS.Cache.document
-		 * @constant NS.Cache.document 
+		 * @name  PG.Cache.document
+		 * @constant PG.Cache.document 
 		 * @type Object
 		 */
         document: document,
 		/**
-		 * @name  NS.Cache.xmlhttp
-		 * @constant NS.Cache.xmlhttp 
+		 * @name  PG.Cache.xmlhttp
+		 * @constant PG.Cache.xmlhttp 
 		 * @type Object
 		 */
         xmlhttp: window.XMLHttpRequest,
 		/** Protocol used in current page (http | https)
-		 * @name  NS.Cache.protocol
-		 * @constant NS.Cache.protocol 
+		 * @name  PG.Cache.protocol
+		 * @constant PG.Cache.protocol 
 		 * @type String
 		 */
         protocol: ('https:' == document.location.protocol ? 'https://' : 'http://'),
 		/** isTouchDevice tell if the current user is a mobile device
-		 * @name  NS.Cache.isTouchDevice
-		 * @constant NS.Cache.isTouchDevice
+		 * @name  PG.Cache.isTouchDevice
+		 * @constant PG.Cache.isTouchDevice
 		 * @type boolean
 		 */
         isTouchDevice: (!!('ontouchstart' in window) || !!('onmsgesturechange' in window)),
 		/** clickEvent used in the application can be touch event if mobile user
-		 * @name  NS.Cache.clickEvent
-		 * @constant NS.Cache.clickEvent 
+		 * @name  PG.Cache.clickEvent
+		 * @constant PG.Cache.clickEvent 
 		 * @type Object
 		 */
         clickEvent: (!!('ontouchstart' in window) || !!('onmsgesturechange' in window)) ? 'touchstart' : 'click',
 		/** config create from "pl_config" variable
-		 * @name  NS.Cache.config
-		 * @constant NS.Cache.config 
+		 * @name  PG.Cache.config
+		 * @constant PG.Cache.config 
 		 * @type Object
 		 */
         config: pl_config,
 		/** config create from "_plgd_settings" variable
-		 * @name  NS.Cache.settings
-		 * @constant NS.Cache.settings 
+		 * @name  PG.Cache.settings
+		 * @constant PG.Cache.settings 
 		 * @type Object
 		 */
         settings: _plgd_settings,
 		/** check if localstorage is available in the current device
-		 * @name  NS.Cache.localstorage
-		 * @constant NS.Cache.localstorage 
+		 * @name  PG.Cache.localstorage
+		 * @constant PG.Cache.localstorage 
 		 * @type boolean
 		 */
         localstorage: ((typeof window.localStorage == 'undefined' || typeof window.sessionStorage == 'undefined') ? false : true)

@@ -27,60 +27,60 @@
 <span class='line'> 20</span> </span><span class="WHIT">	</span><span class="COMM">/**
 <span class='line'> 21</span> 	 * Cache Object
 <span class='line'> 22</span> 	 * @class
-<span class='line'> 23</span>      * @name NS.Cache
+<span class='line'> 23</span>      * @name PG.Cache
 <span class='line'> 24</span> 	 */</span><span class="WHIT">
 <span class='line'> 25</span> </span><span class="WHIT">    </span><span class="NAME">cache</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'> 26</span> </span><span class="WHIT">		</span><span class="COMM">/**
-<span class='line'> 27</span> 		 * @name  NS.Cache.window
-<span class='line'> 28</span> 		 * @constant NS.Cache.window
+<span class='line'> 27</span> 		 * @name  PG.Cache.window
+<span class='line'> 28</span> 		 * @constant PG.Cache.window
 <span class='line'> 29</span> 		 * @type Object
 <span class='line'> 30</span> 		 */</span><span class="WHIT">
 <span class='line'> 31</span> </span><span class="WHIT">        </span><span class="NAME">window</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">window</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 32</span> </span><span class="WHIT">		</span><span class="COMM">/**
-<span class='line'> 33</span> 		 * @name  NS.Cache.document
-<span class='line'> 34</span> 		 * @constant NS.Cache.document 
+<span class='line'> 33</span> 		 * @name  PG.Cache.document
+<span class='line'> 34</span> 		 * @constant PG.Cache.document 
 <span class='line'> 35</span> 		 * @type Object
 <span class='line'> 36</span> 		 */</span><span class="WHIT">
 <span class='line'> 37</span> </span><span class="WHIT">        </span><span class="NAME">document</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">document</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 38</span> </span><span class="WHIT">		</span><span class="COMM">/**
-<span class='line'> 39</span> 		 * @name  NS.Cache.xmlhttp
-<span class='line'> 40</span> 		 * @constant NS.Cache.xmlhttp 
+<span class='line'> 39</span> 		 * @name  PG.Cache.xmlhttp
+<span class='line'> 40</span> 		 * @constant PG.Cache.xmlhttp 
 <span class='line'> 41</span> 		 * @type Object
 <span class='line'> 42</span> 		 */</span><span class="WHIT">
 <span class='line'> 43</span> </span><span class="WHIT">        </span><span class="NAME">xmlhttp</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">window.XMLHttpRequest</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 44</span> </span><span class="WHIT">		</span><span class="COMM">/** Protocol used in current page (http | https)
-<span class='line'> 45</span> 		 * @name  NS.Cache.protocol
-<span class='line'> 46</span> 		 * @constant NS.Cache.protocol 
+<span class='line'> 45</span> 		 * @name  PG.Cache.protocol
+<span class='line'> 46</span> 		 * @constant PG.Cache.protocol 
 <span class='line'> 47</span> 		 * @type String
 <span class='line'> 48</span> 		 */</span><span class="WHIT">
 <span class='line'> 49</span> </span><span class="WHIT">        </span><span class="NAME">protocol</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="STRN">'https:'</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="NAME">document.location.protocol</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="STRN">'https://'</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'http://'</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 50</span> </span><span class="WHIT">		</span><span class="COMM">/** isTouchDevice tell if the current user is a mobile device
-<span class='line'> 51</span> 		 * @name  NS.Cache.isTouchDevice
-<span class='line'> 52</span> 		 * @constant NS.Cache.isTouchDevice
+<span class='line'> 51</span> 		 * @name  PG.Cache.isTouchDevice
+<span class='line'> 52</span> 		 * @constant PG.Cache.isTouchDevice
 <span class='line'> 53</span> 		 * @type boolean
 <span class='line'> 54</span> 		 */</span><span class="WHIT">
 <span class='line'> 55</span> </span><span class="WHIT">        </span><span class="NAME">isTouchDevice</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="PUNC">!</span><span class="PUNC">(</span><span class="STRN">'ontouchstart'</span><span class="WHIT"> </span><span class="KEYW">in</span><span class="WHIT"> </span><span class="NAME">window</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="PUNC">!</span><span class="PUNC">(</span><span class="STRN">'onmsgesturechange'</span><span class="WHIT"> </span><span class="KEYW">in</span><span class="WHIT"> </span><span class="NAME">window</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 56</span> </span><span class="WHIT">		</span><span class="COMM">/** clickEvent used in the application can be touch event if mobile user
-<span class='line'> 57</span> 		 * @name  NS.Cache.clickEvent
-<span class='line'> 58</span> 		 * @constant NS.Cache.clickEvent 
+<span class='line'> 57</span> 		 * @name  PG.Cache.clickEvent
+<span class='line'> 58</span> 		 * @constant PG.Cache.clickEvent 
 <span class='line'> 59</span> 		 * @type Object
 <span class='line'> 60</span> 		 */</span><span class="WHIT">
 <span class='line'> 61</span> </span><span class="WHIT">        </span><span class="NAME">clickEvent</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="PUNC">!</span><span class="PUNC">(</span><span class="STRN">'ontouchstart'</span><span class="WHIT"> </span><span class="KEYW">in</span><span class="WHIT"> </span><span class="NAME">window</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="PUNC">!</span><span class="PUNC">(</span><span class="STRN">'onmsgesturechange'</span><span class="WHIT"> </span><span class="KEYW">in</span><span class="WHIT"> </span><span class="NAME">window</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="STRN">'touchstart'</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'click'</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 62</span> </span><span class="WHIT">		</span><span class="COMM">/** config create from "pl_config" variable
-<span class='line'> 63</span> 		 * @name  NS.Cache.config
-<span class='line'> 64</span> 		 * @constant NS.Cache.config 
+<span class='line'> 63</span> 		 * @name  PG.Cache.config
+<span class='line'> 64</span> 		 * @constant PG.Cache.config 
 <span class='line'> 65</span> 		 * @type Object
 <span class='line'> 66</span> 		 */</span><span class="WHIT">
 <span class='line'> 67</span> </span><span class="WHIT">        </span><span class="NAME">config</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">pl_config</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 68</span> </span><span class="WHIT">		</span><span class="COMM">/** config create from "_plgd_settings" variable
-<span class='line'> 69</span> 		 * @name  NS.Cache.settings
-<span class='line'> 70</span> 		 * @constant NS.Cache.settings 
+<span class='line'> 69</span> 		 * @name  PG.Cache.settings
+<span class='line'> 70</span> 		 * @constant PG.Cache.settings 
 <span class='line'> 71</span> 		 * @type Object
 <span class='line'> 72</span> 		 */</span><span class="WHIT">
 <span class='line'> 73</span> </span><span class="WHIT">        </span><span class="NAME">settings</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">_plgd_settings</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 74</span> </span><span class="WHIT">		</span><span class="COMM">/** check if localstorage is available in the current device
-<span class='line'> 75</span> 		 * @name  NS.Cache.localstorage
-<span class='line'> 76</span> 		 * @constant NS.Cache.localstorage 
+<span class='line'> 75</span> 		 * @name  PG.Cache.localstorage
+<span class='line'> 76</span> 		 * @constant PG.Cache.localstorage 
 <span class='line'> 77</span> 		 * @type boolean
 <span class='line'> 78</span> 		 */</span><span class="WHIT">
 <span class='line'> 79</span> </span><span class="WHIT">        </span><span class="NAME">localstorage</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">window.localStorage</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">window.sessionStorage</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">)</span><span class="WHIT">

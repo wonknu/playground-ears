@@ -16,7 +16,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** Never call this constant by NS
+/** Never call this constant by PG
  * @constant Adfab 
  */
 var Adfab = Adfab || {},
@@ -24,7 +24,7 @@ var Adfab = Adfab || {},
 	/**
 	 * @namespace reference to Adfab.Playground object
 	 */
-    NS = {},
+    PG = {},
 
 	/** Application settings, need to be fill by partner
 	 * @constant _plgd_settings 
@@ -36,8 +36,18 @@ var Adfab = Adfab || {},
 	 */
     pl_config = {
         debug: true,
-        url: 'localhost/plaground-ears/',
-        send: 'send.php',
-        connect: 'connect.php',
+        mode: 'dev',
+        env: {
+        	dev: {
+		        url: 'localhost/playground-ears/',
+		        send: 'send.php',
+		        connect: 'connect.php'
+        	},
+        	prod: {
+		        url: 'livedemo.fr/playground/',
+		        send: 'send.php',
+		        connect: 'connect.php'
+        	}
+        },
         ns: 'Adfab.playground'
     };

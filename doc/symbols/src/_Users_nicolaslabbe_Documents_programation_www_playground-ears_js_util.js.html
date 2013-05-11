@@ -33,7 +33,7 @@
 <span class='line'> 26</span> </span><span class="WHIT">	
 <span class='line'> 27</span>     </span><span class="COMM">/** Util Object
 <span class='line'> 28</span>      * @class
-<span class='line'> 29</span>      * @name NS.Util
+<span class='line'> 29</span>      * @name PG.Util
 <span class='line'> 30</span>      */</span><span class="WHIT">
 <span class='line'> 31</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">util</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'> 32</span> </span><span class="WHIT">        
@@ -41,7 +41,7 @@
 <span class='line'> 34</span>          * Check if a variable is null
 <span class='line'> 35</span> 	     * @function
 <span class='line'> 36</span>          * 
-<span class='line'> 37</span> 	     * @name NS.Util.not_null
+<span class='line'> 37</span> 	     * @name PG.Util.not_null
 <span class='line'> 38</span> 	     * 
 <span class='line'> 39</span>          * @param {Object} object DOM object
 <span class='line'> 40</span>          * @return {boolean} bool true or false
@@ -49,7 +49,7 @@
 <span class='line'> 42</span> 	     * @this {Util}
 <span class='line'> 43</span> 	     * 
 <span class='line'> 44</span> 	     * @example
-<span class='line'> 45</span> 	     * NS.Util.not_null( Object | String | ... )
+<span class='line'> 45</span> 	     * PG.Util.not_null( Object | String | ... )
 <span class='line'> 46</span> 	     * 
 <span class='line'> 47</span> 	     * @since version 1.0.0
 <span class='line'> 48</span>          */</span><span class="WHIT">
@@ -64,7 +64,7 @@
 <span class='line'> 57</span>          * Return the content of the given tag
 <span class='line'> 58</span> 	     * @function
 <span class='line'> 59</span>          * 
-<span class='line'> 60</span> 	     * @name NS.Util.getValueFromObject
+<span class='line'> 60</span> 	     * @name PG.Util.getValueFromObject
 <span class='line'> 61</span> 	     * 
 <span class='line'> 62</span>          * @param {Object} DOM Object
 <span class='line'> 63</span>          * @return {String} value
@@ -72,7 +72,7 @@
 <span class='line'> 65</span> 	     * @this {Util}
 <span class='line'> 66</span> 	     * 
 <span class='line'> 67</span> 	     * @example
-<span class='line'> 68</span> 	     * NS.Util.getValueFromObject( Object | String | ... )
+<span class='line'> 68</span> 	     * PG.Util.getValueFromObject( Object | String | ... )
 <span class='line'> 69</span> 	     * 
 <span class='line'> 70</span> 	     * @since version 1.0.0
 <span class='line'> 71</span>          */</span><span class="WHIT">
@@ -81,7 +81,7 @@
 <span class='line'> 74</span> </span><span class="WHIT">            </span><span class="STRN">'use strict'</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 75</span> </span><span class="WHIT">            
 <span class='line'> 76</span>             </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">value</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">''</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 77</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">NS.Util.not_null</span><span class="PUNC">(</span><span class="NAME">obj</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">obj</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="STRN">'object'</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">obj.type</span><span class="WHIT"> </span><span class="PUNC">!=</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 77</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">PG.Util.not_null</span><span class="PUNC">(</span><span class="NAME">obj</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">obj</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="STRN">'object'</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">obj.type</span><span class="WHIT"> </span><span class="PUNC">!=</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'> 78</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">obj.value</span><span class="WHIT"> </span><span class="PUNC">!=</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'> 79</span> </span><span class="WHIT">                    </span><span class="NAME">value</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">obj.value</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 80</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">obj.innerHTML</span><span class="WHIT"> </span><span class="PUNC">!=</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
@@ -95,7 +95,7 @@
 <span class='line'> 88</span>          * Create a cookie under Adfab.Playground.[ name ]
 <span class='line'> 89</span> 	     * @function
 <span class='line'> 90</span> 	     * 
-<span class='line'> 91</span> 	     * @name NS.Util.createCookie
+<span class='line'> 91</span> 	     * @name PG.Util.createCookie
 <span class='line'> 92</span> 	     * 
 <span class='line'> 93</span>          * @param {String} name
 <span class='line'> 94</span>          * @param {String} value
@@ -105,7 +105,7 @@
 <span class='line'> 98</span> 	     * @this {Util}
 <span class='line'> 99</span> 	     * 
 <span class='line'>100</span> 	     * @example
-<span class='line'>101</span> 	     * NS.Util.createCookie( {String} name, {String} value, [ {Number} days ])
+<span class='line'>101</span> 	     * PG.Util.createCookie( {String} name, {String} value, [ {Number} days ])
 <span class='line'>102</span> 	     * 
 <span class='line'>103</span> 	     * @since version 1.0.0
 <span class='line'>104</span>          */</span><span class="WHIT">
@@ -114,8 +114,8 @@
 <span class='line'>107</span> </span><span class="WHIT">            </span><span class="STRN">'use strict'</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>108</span> </span><span class="WHIT">            
 <span class='line'>109</span>             </span><span class="COMM">// if localstorage enabled</span><span class="WHIT">
-<span class='line'>110</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">NS.Cache.localstorage</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>111</span> </span><span class="WHIT">            	</span><span class="NAME">localStorage.setItem</span><span class="PUNC">(</span><span class="NAME">NS.Cache.config.ns</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'.'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">name</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">value</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>110</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">PG.Cache.localstorage</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>111</span> </span><span class="WHIT">            	</span><span class="NAME">localStorage.setItem</span><span class="PUNC">(</span><span class="NAME">PG.Cache.config.ns</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'.'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">name</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">value</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>112</span> </span><span class="WHIT">        	</span><span class="COMM">// if localstorage not enable use cookies as polyfill</span><span class="WHIT">
 <span class='line'>113</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'>114</span> </span><span class="WHIT">	            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">days</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
@@ -124,7 +124,7 @@
 <span class='line'>117</span> </span><span class="WHIT">	                </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">expires</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"; expires="</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">date.toGMTString</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>118</span> </span><span class="WHIT">	            </span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'>119</span> </span><span class="WHIT">	            </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">expires</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>120</span> </span><span class="WHIT">	            </span><span class="NAME">document.cookie</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">NS.Cache.config.ns</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'.'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">name</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"="</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">encodeURIComponent</span><span class="PUNC">(</span><span class="NAME">value</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">expires</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"; path=/"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>120</span> </span><span class="WHIT">	            </span><span class="NAME">document.cookie</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">PG.Cache.config.ns</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'.'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">name</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"="</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">encodeURIComponent</span><span class="PUNC">(</span><span class="NAME">value</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">expires</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"; path=/"</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>121</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'>122</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>123</span> </span><span class="WHIT">        
@@ -132,7 +132,7 @@
 <span class='line'>125</span>          * Get value of a cookie
 <span class='line'>126</span> 	     * @function
 <span class='line'>127</span> 	     * 
-<span class='line'>128</span> 	     * @name NS.Util.readCookie
+<span class='line'>128</span> 	     * @name PG.Util.readCookie
 <span class='line'>129</span> 	     * 
 <span class='line'>130</span>          * @param {String} name
 <span class='line'>131</span>          * @return {String} | {null} value of the cookie
@@ -140,7 +140,7 @@
 <span class='line'>133</span> 	     * @this {Util}
 <span class='line'>134</span> 	     * 
 <span class='line'>135</span> 	     * @example
-<span class='line'>136</span> 	     * NS.Util.readCookie( {String} name)
+<span class='line'>136</span> 	     * PG.Util.readCookie( {String} name)
 <span class='line'>137</span> 	     * 
 <span class='line'>138</span> 	     * @since version 1.0.0
 <span class='line'>139</span>          */</span><span class="WHIT">
@@ -149,11 +149,11 @@
 <span class='line'>142</span> </span><span class="WHIT">            </span><span class="STRN">'use strict'</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>143</span> </span><span class="WHIT">            
 <span class='line'>144</span>             </span><span class="COMM">// if localstorage enabled</span><span class="WHIT">
-<span class='line'>145</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">NS.Cache.localstorage</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>146</span> </span><span class="WHIT">            	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">localStorage.getItem</span><span class="PUNC">(</span><span class="NAME">NS.Cache.config.ns</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'.'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">name</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>145</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">PG.Cache.localstorage</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>146</span> </span><span class="WHIT">            	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">localStorage.getItem</span><span class="PUNC">(</span><span class="NAME">PG.Cache.config.ns</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'.'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">name</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>147</span> </span><span class="WHIT">        	</span><span class="COMM">// if localstorage not enable use cookies as polyfill</span><span class="WHIT">
 <span class='line'>148</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>149</span> </span><span class="WHIT">	            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">nameEQ</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">NS.Cache.config.ns</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'.'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">name</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"="</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>149</span> </span><span class="WHIT">	            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">nameEQ</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">PG.Cache.config.ns</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'.'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">name</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"="</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>150</span> </span><span class="WHIT">	                </span><span class="NAME">ca</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">document.cookie.split</span><span class="PUNC">(</span><span class="STRN">';'</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>151</span> </span><span class="WHIT">	                </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>152</span> </span><span class="WHIT">	                </span><span class="NAME">c</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">''</span><span class="PUNC">;</span><span class="WHIT">
@@ -171,7 +171,7 @@
 <span class='line'>164</span>          * Delete a cookie
 <span class='line'>165</span> 	     * @function
 <span class='line'>166</span> 	     * 
-<span class='line'>167</span> 	     * @name NS.Util.eraseCookie
+<span class='line'>167</span> 	     * @name PG.Util.eraseCookie
 <span class='line'>168</span> 	     * 
 <span class='line'>169</span>          * @param {String} name
 <span class='line'>170</span>          * @return {null} no return
@@ -179,7 +179,7 @@
 <span class='line'>172</span> 	     * @this {Util}
 <span class='line'>173</span> 	     * 
 <span class='line'>174</span> 	     * @example
-<span class='line'>175</span> 	     * NS.Util.readCookie( {String} name)
+<span class='line'>175</span> 	     * PG.Util.readCookie( {String} name)
 <span class='line'>176</span> 	     * 
 <span class='line'>177</span> 	     * @since version 1.0.0
 <span class='line'>178</span>          */</span><span class="WHIT">
@@ -188,12 +188,12 @@
 <span class='line'>181</span> </span><span class="WHIT">            </span><span class="STRN">'use strict'</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>182</span> </span><span class="WHIT">            
 <span class='line'>183</span>             </span><span class="COMM">// if localstorage enabled</span><span class="WHIT">
-<span class='line'>184</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">NS.Cache.localstorage</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>185</span> </span><span class="WHIT">            	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">localStorage.removeItem</span><span class="PUNC">(</span><span class="NAME">NS.Cache.config.ns</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'.'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">name</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>184</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">PG.Cache.localstorage</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>185</span> </span><span class="WHIT">            	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">localStorage.removeItem</span><span class="PUNC">(</span><span class="NAME">PG.Cache.config.ns</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'.'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">name</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>186</span> </span><span class="WHIT">        	</span><span class="COMM">// if localstorage not enable use cookies as polyfill</span><span class="WHIT">
 <span class='line'>187</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'>188</span> </span><span class="WHIT">	            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">expires</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'expires=Thu, 01 Jan 1970 00:00:01 GMT'</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>189</span> </span><span class="WHIT">	            </span><span class="NAME">document.cookie</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">NS.Cache.config.ns</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'.'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">name</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"=''; "</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">expires</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"; path=/"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>189</span> </span><span class="WHIT">	            </span><span class="NAME">document.cookie</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">PG.Cache.config.ns</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'.'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">name</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"=''; "</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">expires</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"; path=/"</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>190</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'>191</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>192</span> </span><span class="WHIT">        
@@ -201,7 +201,7 @@
 <span class='line'>194</span>          * Tell if input URL match current URL
 <span class='line'>195</span> 	     * @function
 <span class='line'>196</span> 	     * 
-<span class='line'>197</span> 	     * @name NS.Util.matchUrl
+<span class='line'>197</span> 	     * @name PG.Util.matchUrl
 <span class='line'>198</span> 	     * 
 <span class='line'>199</span>          * @param {String} url
 <span class='line'>200</span>          * @return {Boolean} bool true or false
@@ -209,7 +209,7 @@
 <span class='line'>202</span> 	     * @this {Util}
 <span class='line'>203</span> 	     * 
 <span class='line'>204</span> 	     * @example
-<span class='line'>205</span> 	     * NS.Util.matchUrl( {String} url)
+<span class='line'>205</span> 	     * PG.Util.matchUrl( {String} url)
 <span class='line'>206</span> 	     * 
 <span class='line'>207</span> 	     * @since version 1.0.0
 <span class='line'>208</span>          */</span><span class="WHIT">
@@ -230,21 +230,21 @@
 <span class='line'>223</span> 	     * @this {Util}
 <span class='line'>224</span> 	     * 
 <span class='line'>225</span> 	     * @example
-<span class='line'>226</span> 	     * NS.Util.isUrlValid( {String} url)
+<span class='line'>226</span> 	     * PG.Util.isUrlValid( {String} url)
 <span class='line'>227</span> 	     * 
 <span class='line'>228</span> 	     * @since version 1.0.0
 <span class='line'>229</span>          */</span><span class="WHIT">
 <span class='line'>230</span> </span><span class="WHIT">        </span><span class="NAME">isUrlValid</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">url</span><span class="PUNC">)</span><span class="WHIT">
 <span class='line'>231</span> </span><span class="WHIT">        </span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'>232</span> </span><span class="WHIT">            </span><span class="STRN">'use strict'</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>233</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">NS.Cache.config.url.indexOf</span><span class="PUNC">(</span><span class="NAME">url</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">>=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>233</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">PG.Cache.config.url.indexOf</span><span class="PUNC">(</span><span class="NAME">url</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">>=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>234</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>235</span> </span><span class="WHIT">        
 <span class='line'>236</span>         </span><span class="COMM">/**
-<span class='line'>237</span>          * log string if NS.Cache.Config.debug allow it
+<span class='line'>237</span>          * log string if PG.Cache.Config.debug allow it
 <span class='line'>238</span> 	     * @function
 <span class='line'>239</span> 	     * 
-<span class='line'>240</span> 	     * @name NS.Util.log
+<span class='line'>240</span> 	     * @name PG.Util.log
 <span class='line'>241</span> 	     * 
 <span class='line'>242</span>          * @param {Object} str
 <span class='line'>243</span>          * @return {null}
@@ -252,13 +252,13 @@
 <span class='line'>245</span> 	     * @this {Util}
 <span class='line'>246</span> 	     * 
 <span class='line'>247</span> 	     * @example
-<span class='line'>248</span> 	     * NS.Util.log( {String} str)
+<span class='line'>248</span> 	     * PG.Util.log( {String} str)
 <span class='line'>249</span> 	     * 
 <span class='line'>250</span> 	     * @since version 1.0.0
 <span class='line'>251</span>          */</span><span class="WHIT">
 <span class='line'>252</span> </span><span class="WHIT">        </span><span class="NAME">log</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="WHIT">
 <span class='line'>253</span> </span><span class="WHIT">        </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>254</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">NS.Cache.config.debug</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>254</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">PG.Cache.config.debug</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'>255</span> </span><span class="WHIT">                </span><span class="NAME">console.log</span><span class="PUNC">(</span><span class="STRN">"%c> PLAYGROUND DEBUG ::"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"color:blue; font-weight:bold;"</span><span class="PUNC">)</span><span class="WHIT">
 <span class='line'>256</span> </span><span class="WHIT">                </span><span class="NAME">console.log</span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="WHIT">
 <span class='line'>257</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
@@ -268,7 +268,7 @@
 <span class='line'>261</span>         * get dom element from object.selector and object.name
 <span class='line'>262</span> 	    * @function
 <span class='line'>263</span> 	    * 
-<span class='line'>264</span> 	    * @name NS.Util.getDomElemntFromItem
+<span class='line'>264</span> 	    * @name PG.Util.getDomElemntFromItem
 <span class='line'>265</span> 	    * 
 <span class='line'>266</span>         * @param {Object} item object with variable
 <span class='line'>267</span>         * @param item.selector type of the DOM element
@@ -278,7 +278,7 @@
 <span class='line'>271</span> 	    * @this {Util}
 <span class='line'>272</span> 	    * 
 <span class='line'>273</span> 	    * @example
-<span class='line'>274</span> 	    * NS.Util.getDomElemntFromItem( {String} it)
+<span class='line'>274</span> 	    * PG.Util.getDomElemntFromItem( {String} it)
 <span class='line'>275</span> 	    * 
 <span class='line'>276</span> 	    * @since version 1.0.0
 <span class='line'>277</span>         */</span><span class="WHIT">

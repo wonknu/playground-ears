@@ -37,17 +37,17 @@ pl.ready(function ()
     /**
      * Create a new instance of Promise pattern
      * 
-     * @name NS.Promise
+     * @name PG.Promise
      * @class
 	 * @constructor
 	 * 
 	 * @param {null}
 	 * @return {Object} this
      * 
-     * @this {object} NS.Promise
+     * @this {object} PG.Promise
 	 * 
 	 * @example
-	 * var p = new NS.Promise();
+	 * var p = new PG.Promise();
 	 * // call success callback
 	 * p.resolve();
 	 * // call error callback
@@ -74,15 +74,15 @@ pl.ready(function ()
 	    /** function called when a promise is done
 	     * 
 	     * @function
-	     * @name NS.Promise.then
+	     * @name PG.Promise.then
 	     * 
 	     * @param {Function} success callback
 	     * @param {Function} failure callback
 	     * 
-	     * @this {object} NS.Promise
+	     * @this {object} PG.Promise
 	     * 
 	     * @example
-	     * NS.Promise.then( {Function} success, {Function} error)
+	     * PG.Promise.then( {Function} success, {Function} error)
 	     * 
 	     * @since version 1.0.0
 	     */
@@ -98,12 +98,12 @@ pl.ready(function ()
 	     * never call this method, use then (success, failure)
 	     * @function
 	     * 
-	     * @name NS.Promise.resolve
+	     * @name PG.Promise.resolve
 	     * 
 	     * @param {object} value
 	     * @return {null} no return
 	     * 
-	     * @this {object} NS.Promise
+	     * @this {object} PG.Promise
 	     * 
 	     * @ignore
 	     * 
@@ -120,12 +120,12 @@ pl.ready(function ()
 	     * never call this method, use then (success, failure)
 	     * @function
 	     * 
-	     * @name NS.Promise.reject
+	     * @name PG.Promise.reject
 	     * 
 	     * @param {object} value
 	     * @return {null} no return
 	     * 
-	     * @this {object} NS.Promise
+	     * @this {object} PG.Promise
 	     * 
 	     * @ignore
 	     * 

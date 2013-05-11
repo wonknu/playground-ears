@@ -26,7 +26,7 @@ pl.ready(function ()
 	
     /** App Object
      * @class
-     * @name NS.App
+     * @name PG.App
      */
     function App ()
     {
@@ -38,7 +38,7 @@ pl.ready(function ()
      * This method create the namespace used all over the application
      * @function
      * 
-     * @name NS.App.init
+     * @name PG.App.init
      * 
      * @param {null} no params
      * @return {null} no return
@@ -52,27 +52,27 @@ pl.ready(function ()
     App.prototype.init = function ()
     {
         // Namespace
-        NS = Adfab.Playground; 
+        PG = Adfab.Playground; 
         
         // check api key
-        if(NS.Util.not_null(NS.Cache.settings) && NS.Util.not_null(NS.Cache.settings.apiKey)) {
-            NS.User.env = _plgd_settings;
-            NS.Util.log('APIKEY FOUND = ' + NS.Cache.settings.apiKey);
+        if(PG.Util.not_null(PG.Cache.settings) && PG.Util.not_null(PG.Cache.settings.apiKey)) {
+            PG.User.env = _plgd_settings;
+            PG.Util.log('APIKEY FOUND = ' + PG.Cache.settings.apiKey);
         }else {
-            NS.Util.log('NOT APIKEY FOUND');
+            PG.Util.log('NOT APIKEY FOUND');
             return;
         }
         
-        NS.App.easyXDM();
-        NS.App.bindEvent();
-        NS.User.init();
+        PG.App.easyXDM();
+        PG.App.bindEvent();
+        PG.User.init();
     };
     
     /**
      * Bind the event to track user move
      * @function
      * 
-     * @name NS.App.bindEvent
+     * @name PG.App.bindEvent
      * 
      * @param {null} no params
      * @return {null} no return
@@ -87,11 +87,11 @@ pl.ready(function ()
     {
         // AJAX
         var xhrListn = new Object();
-            xhrListn.open = NS.Cache.xmlhttp.prototype.open;
-            xhrListn.send = NS.Cache.xmlhttp.prototype.send;
+            xhrListn.open = PG.Cache.xmlhttp.prototype.open;
+            xhrListn.send = PG.Cache.xmlhttp.prototype.send;
         
         // Catch all the xhr open event
-        NS.Cache.xmlhttp.prototype.open = function (a, b)
+        PG.Cache.xmlhttp.prototype.open = function (a, b)
         {
             if (!a) var a='';
             if (!b) var b='';
@@ -106,7 +106,7 @@ pl.ready(function ()
         };
         
         // Catch all the xhr send event
-        NS.Cache.xmlhttp.prototype.send = function (a, b)
+        PG.Cache.xmlhttp.prototype.send = function (a, b)
         {
             if (!a) var a='';
             if (!b) var b='';
@@ -115,16 +115,16 @@ pl.ready(function ()
         };
         
         // Catch all the load finished event
-        NS.Cache.document.onreadystatechange = function (e)
+        PG.Cache.document.onreadystatechange = function (e)
         {
-            if(NS.Util.not_null(e.data) && e.data != '') {
-                NS.App.send(e.data);
+            if(PG.Util.not_null(e.data) && e.data != '') {
+                PG.App.send(e.data);
             }
         };
         
-        NS.Cache.window.onbeforeunload = function (e)
+        PG.Cache.window.onbeforeunload = function (e)
         {
-            NS.User.quit();
+            PG.User.quit();
             return null;
         };
     };
@@ -134,7 +134,7 @@ pl.ready(function ()
      * Using easyXDM as RPC mode
      * @function
      * 
-     * @name NS.App.easyXDM
+     * @name PG.App.easyXDM
      * 
      * @param {null} no params
      * @return {null} no return
@@ -147,14 +147,14 @@ pl.ready(function ()
      */
     App.prototype.easyXDM = function ()
     {
-        NS.App.rpc = new easyXDM.Rpc(
+        PG.App.rpc = new easyXDM.Rpc(
         {
             // fallback NameTransport
-            local: NS.Cache.protocol + NS.Cache.config.url + "easyXDM/name.html",
+            local: PG.Cache.protocol + PG.Cache.config.env[PG.Cache.config.mode].url + "easyXDM/name.html",
             // fallback swf
-            swf: NS.Cache.protocol + NS.Cache.config.url + "easyXDM/easyxdm.swf",
+            swf: PG.Cache.protocol + PG.Cache.config.env[PG.Cache.config.mode].url + "easyXDM/easyxdm.swf",
             // page to load
-            remote: NS.Cache.protocol + NS.Cache.config.url + "index.html"
+            remote: PG.Cache.protocol + PG.Cache.config.env[PG.Cache.config.mode].url + "index.html"
         },
         {
             remote: {
@@ -167,7 +167,7 @@ pl.ready(function ()
      * Send a request to easyXDM using RPC with no return
      * @function
      * 
-     * @name NS.App.send
+     * @name PG.App.send
      * 
      * @param {string} url of the service
      * @return {Boolean} valid url
@@ -175,30 +175,30 @@ pl.ready(function ()
      * @this {App}
      * 
      * @example
-     * NS.App.send( {String} url)
+     * PG.App.send( {String} url)
      * 
      * @since version 1.0.0
      */
     App.prototype.send = function (url)
     {
-        var validUrl = NS.Util.isUrlValid(url);
+        var validUrl = PG.Util.isUrlValid(url);
         if(validUrl) {
-            var userUrl = NS.Cache.protocol + NS.Cache.config.url + NS.Cache.config.send + '?apiKey='
-                + NS.Cache.settings.apiKey + '&url=' + url + '&uid=' + NS.User.uid;
+            var userUrl = PG.Cache.protocol + PG.Cache.config.env[PG.Cache.config.mode].url + PG.Cache.config.send + '?apiKey='
+                + PG.Cache.settings.apiKey + '&url=' + url + '&uid=' + PG.User.uid;
             
-            NS.Util.log('send url : ' + userUrl);
+            PG.Util.log('send url : ' + userUrl);
             
-            if(NS.User.isLogged()) {
-                userUrl += '&login=' + NS.User.id;
+            if(PG.User.isLogged()) {
+                userUrl += '&login=' + PG.User.id;
             }
             
-            NS.App.rpc.request(
+            PG.App.rpc.request(
                 { 
                     url: userUrl
                 },
                 function (rpcdata)
                 {
-                    NS.Util.log(rpcdata);
+                    PG.Util.log(rpcdata);
                 },
                 function (error)
                 {
@@ -213,7 +213,7 @@ pl.ready(function ()
      * Send a request to easyXDM using RPC waiting for a json return
      * @function
      * 
-     * @name NS.App.call
+     * @name PG.App.call
      * 
      * @param {string} serviceName
      * @return {Object} promise
@@ -223,20 +223,20 @@ pl.ready(function ()
      * @throws {requestError} service cannot be called
      * 
      * @example
-     * NS.App.call( {String} service )
+     * PG.App.call( {String} service )
      * .then( {Function} callback)
      * 
      * @since version 1.0.0
      */
     App.prototype.call = function (s)
     {
-        var promise = new NS.Promise();
+        var promise = new PG.Promise();
         
-        NS.Util.log('call service : ' + s);
+        PG.Util.log('call service : ' + s);
         
-        NS.App.rpc.request(
+        PG.App.rpc.request(
             {
-                url: NS.Cache.protocol + NS.Cache.config.url + s + '?apiKey=' + NS.Cache.settings.apiKey
+                url: PG.Cache.protocol + PG.Cache.config.env[PG.Cache.config.mode].url + s + '?apiKey=' + PG.Cache.settings.apiKey
             },
             function (rpcdata)
             {

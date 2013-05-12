@@ -1,5 +1,5 @@
-[playground-ears] - UX developer tool
-===============================================================================================================
+playground-ears
+===============
 
 Cross domain URL sniffer
 

@@ -57,7 +57,7 @@ pl.ready(function ()
          * Return true if xpath is found
 	     * @function 
          * 
-	     * @name PG.Util.checkXpath
+	     * @name PG.Util.checkXpathc
 	     * 
          * @param {String} xpath 
          * @return {boolean} bool true or false  

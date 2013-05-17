@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2013 - Adfab - nicolas labbŽ
+ * Copyright (C) 2013 - Adfab - nicolas labbï¿½
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

@@ -51,4 +51,4 @@ var pl = {
             window.attachEvent('onload', fn);
         }
     }
-}
+};

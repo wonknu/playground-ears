@@ -1,6 +1,6 @@
 /**
  * this is the main application file, which one that init project bind event, etc...
- * Copyright (C) 2013 - Adfab - nicolas labbŽ
+ * Copyright (C) 2013 - Adfab - nicolas labbï¿½
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-pl.ready(function ()
-{
+//pl.ready(function ()
+//{
     'use strict';
     
 	/**
@@ -145,4 +145,4 @@ pl.ready(function ()
     }catch(e) {
        throw new Error( "Cannot extends 'Promise' to 'Adfab.playground.Promise'" );
     }
-});
+//});

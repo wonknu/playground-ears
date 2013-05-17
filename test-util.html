@@ -3,12 +3,11 @@
     <head>
         <meta charset="utf-8">
         <title>title</title>
-        <script type="text/javascript">
-        var _pg = _pg || {}; // creation du name space
-        _pg.apiKey = 'key_first'; // enregistre [api key || app ID]
-        var scpge = document.createElement('script'); scpge.type = 'text/javascript'; scpge.async = true;
-        scpge.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + '192.168.1.103/plaground-ears/js/ears.min.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(scpge, s);
+        <!-- data-mouth="true"-->
+        <script type="text/javascript" 
+            data-pg-api-key="key_first"
+                    data-ears="true"
+                        src="//192.168.1.103/playground-init/js/pg.min.js"></script>
         </script>
     </head>
     <body>

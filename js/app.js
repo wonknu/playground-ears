@@ -195,15 +195,8 @@ App.prototype.send = function (url)
     'use strict';
     
     var broadcast = (PG.User.data.library.config.broadcast),
-        json = {
-            user: {
-                uid: PG.User.uid
-            },
-            actions: [],
-            url: url,
-            apiKey: PG.Settings.apiKey
-        },
-        n, o, use, userUrl, story, item, property;
+        userUrl = PG.Cache.protocol + PG.Config.env[PG.Config.mode].url + PG.Config.env[PG.Config.mode].send,
+        json, n, use, story;
     
     if(!PG.Util.isUrlValid(url)) {
         return false;
@@ -215,36 +208,24 @@ App.prototype.send = function (url)
         
         // get variable if send this url
         if(PG.User.checkStory(story.conditions)) {
-            json.actions.push(PG.User.getStory(story.action, story.objects));
+            json = PG.User.getStory(url, n, story.objects);
+        
+            PG.App.rpc.request(
+                {
+                    url: userUrl,
+                    method: 'POST',
+                    data: json
+                },
+                function (rpcdata)
+                {
+                    //PG.Util.log(rpcdata);
+                },
+                function (error)
+                {
+                    throw 'Api Error, code : ' + error.code + ', msg : ' + error.message;
+                }
+            );
         }
-    }
-    
-    if(broadcast
-        || json.actions.length > 0) {
-        
-        if(PG.User.isLogged()) {
-            json.user.login = PG.User.id;
-        }
-        json.actions = JSON.stringify(json.actions)
-        json.user = JSON.stringify(json.user)
-        
-        userUrl = PG.Cache.protocol + PG.Config.env[PG.Config.mode].url + PG.Config.env[PG.Config.mode].send;
-        
-        PG.App.rpc.request(
-            { 
-                url: userUrl,
-                method: 'POST',
-                data: json
-            },
-            function (rpcdata)
-            {
-                PG.Util.log(rpcdata);
-            },
-            function (error)
-            {
-                throw 'Api Error, code : ' + error.code + ', msg : ' + error.message;
-            }
-        );
     }
     return true;
 }; 

@@ -13,29 +13,22 @@ header('Content-type: application/json');
             "login_user" : {
                 "events": {
                     "before": {
-                        "url": "/customer\\/account\\/login/",
-                        "xpath": "//a[@title='Log In']"
+                        "xpath": "//input[@id='edit-name']"
                     },
                     "after": {
-                        "url": "/customer\\/account/",
                         "xpath": "//a[@title='Log Out']"
                     }
                 },
                 "conditions": {
-                    "url": "/customer\\/account\\/login/",
-                    "xpath": "//input[@id='email']"
+                    "xpath": "//input[@id='edit-name']"
                 },
                 "action": "login",
                 "objects": {
                     "id": "login_id",
                     "properties": [
                         {
-                            "name": "email",
-                            "xpath": "//input[@id='email']"
-                        },
-                        {
-                            "name": "email2",
-                            "xpath": "//input[@id='email2']"
+                            "name": "username",
+                            "xpath": "//input[@id='edit-name']"
                         }
                     ]
                 }
@@ -43,7 +36,6 @@ header('Content-type: application/json');
             "logout_user" : {
                 "events": {
                     "before": {
-                        "url": "/p.magento/",
                         "xpath": "//a[@title='Log Out']"
                     },
                     "after": {
@@ -90,9 +82,7 @@ header('Content-type: application/json');
         }
     }
 }
-<?php /*
-*/
-?>
+*/ ?>
 {
     "library":
     {
@@ -150,7 +140,7 @@ header('Content-type: application/json');
             },
             "read_wishlist" : {
                 "conditions": {
-                    "url": "/wishlist/"
+                    "url": "/customer\\/account/"
                 },
                 "action": "look",
                 "objects": {

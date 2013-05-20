@@ -157,20 +157,19 @@ var user = {
     {
         'use strict';
         
-        if(PG.Util.not_null(PG.Util.readCookie('logout-try'))) { // USER TRIED TO LOUGOUT
-            if(PG.Util.not_null(PG.User.data.library.stories.logout_user)
-                && PG.Util.not_null(PG.User.data.library.stories.logout_user.events.after)
-                    && PG.User.checkStory(PG.User.data.library.stories.logout_user.events.after)) {
-                PG.User.logout();
-            }
-        }else if(PG.Util.not_null(PG.Util.readCookie('login-try'))) { // USER TRIED TO LOGIN
+        if(PG.Util.not_null(PG.Util.readCookie('login-try'))) { // USER TRIED TO LOGIN
             if(PG.Util.not_null(PG.User.data.library.stories.login_user)
                 && PG.Util.not_null(PG.User.data.library.stories.login_user.events.after)
                     && PG.User.checkStory(PG.User.data.library.stories.login_user.events.after)) {
                 PG.User.login(PG.Util.readCookie('login-try'));
             }
-        }
-        if(PG.Util.not_null(PG.Util.readCookie('login'))) { // USER IS ALREADY LOGGED
+        }else if(PG.Util.not_null(PG.Util.readCookie('logout-try'))) { // USER TRIED TO LOUGOUT
+            if(PG.Util.not_null(PG.User.data.library.stories.logout_user)
+                && PG.Util.not_null(PG.User.data.library.stories.logout_user.events.after)
+                    && PG.User.checkStory(PG.User.data.library.stories.logout_user.events.after)) {
+                PG.User.logout();
+            }
+        }else if(PG.Util.not_null(PG.Util.readCookie('login'))) { // USER IS ALREADY LOGGED
             PG.User.login(PG.Util.readCookie('login'));
         }else { // USER IS LOGGED OUT
             PG.User.logout();
@@ -243,43 +242,6 @@ var user = {
      * Check evidences for current user.evidences object
      * @function
      * 
-     * @name PG.User.checkEvidences
-     * 
-     * @param {null}
-     * @return {Boolean} result true | false
-     * 
-     * @this {User}
-     * 
-     * @ignore
-     * 
-     * @since version 1.0.0
-     */
-    checkEvidences: function (evidences)
-    {
-        'use strict';
-        
-        var obj = null,
-            evidencesOk = true,
-            it;
-        
-        for(it in evidences) {
-            if(evidences[it].selector === 'id') {
-                obj = document.getElementById(evidences[it].name);
-            }else if(PG.User.data.evidences[it].selector === 'class') {
-                obj = document.getElementsByClassName(evidences[it].name);
-            }
-            if(obj === null) {
-                evidencesOk = false;
-            }
-        }
-        
-        return evidencesOk;
-    },
-    
-    /**
-     * Check evidences for current user.evidences object
-     * @function
-     * 
      * @name PG.User.checkStory
      * 
      * @param {Object} story
@@ -297,27 +259,25 @@ var user = {
         
         var use = false;
         if(PG.Util.not_null(story)) {
-            // check conditions
-            if(PG.Util.not_null(story)) {
-                // check condition url + xpath
-                if(PG.Util.not_null(story.url)
-                    && PG.Util.not_null(story.xpath)
-                        && PG.Util.matchUrl(story.url)
-                            && PG.Util.checkXpath(story.xpath)) {
-                    use = true;
-                }else if(PG.Util.not_null(story.url)
+            // check condition url + xpath
+            if(PG.Util.not_null(story.url)
+                && PG.Util.not_null(story.xpath)
                     && PG.Util.matchUrl(story.url)
-                        && !PG.Util.not_null(story.xpath)) {
+                        && PG.Util.checkXpath(story.xpath)) {
+                use = true;
+            }else if(PG.Util.not_null(story.url)
+                && PG.Util.matchUrl(story.url)
+                    && !PG.Util.not_null(story.xpath)) {
                 // check condition url
-                    use = true;
-                }else if(PG.Util.not_null(story.xpath)
-                    && PG.Util.checkXpath(story.xpath)
-                        && !PG.Util.not_null(story.url)) {
+                use = true;
+            }else if(PG.Util.not_null(story.xpath)
+                && PG.Util.checkXpath(story.xpath)
+                    && !PG.Util.not_null(story.url)) {
                 // check condition xpath
-                    use = true;
-                }
+                use = true;
             }
         }
+        console.log('use : ' + use)
         return use;
     },
     
@@ -327,8 +287,8 @@ var user = {
      * 
      * @name PG.User.getStory
      * 
-     * @param {String} action
-     * @param {Object} objects
+     * @param {String} url
+     * @param {Object} story
      * @return {Boolean} result true | false
      * 
      * @this {User}
@@ -337,37 +297,39 @@ var user = {
      * 
      * @since version 1.0.0
      */
-    getStory: function (action, objects)
+    getStory: function (url, action, obj)
     {
         'use strict';
         
-        var item = {
-            name: action,
-            properties: []
-        },
-        property, o;
+        var json = {
+            user: {
+                anonymous: PG.User.uid,
+                login: (PG.User.isLogged()) ? PG.User.id : ''
+            },
+            action: action,
+            objects: {
+                id: obj.id,
+                properties: []
+            },
+            url: url,
+            apiKey: PG.Settings.apiKey
+        };
         
-        if(PG.Util.not_null(objects)) {
-            for(o in objects.properties) {
-                property = objects.properties[o];
-                // check condition xpath
-                if(PG.Util.not_null(property)
-                    && typeof property !== 'function') {
-                    if(PG.Util.not_null(PG.Util.getObjectFromXpath(property.xpath)[0])) {
-                        item.properties.push(
-                            {
-                                name: property.name,
-                                value: PG.Util.getValueFromObject(
-                                    PG.Util.getObjectFromXpath(property.xpath)[0]
-                                )
-                            }
-                        )
-                    }
-                }
+        if(PG.Util.not_null(obj)) {
+            
+            if(obj.properties.length > 0
+                && PG.Util.not_null(obj.properties[0].xpath)
+                    && PG.Util.not_null(obj.properties[0].name)
+                        && PG.Util.not_null(PG.Util.getObjectFromXpath(obj.properties[0].xpath)[0])) {
+                json.objects.properties = {
+                    name: obj.properties[0].name,
+                    value: PG.Util.getValueFromObject(
+                        PG.Util.getObjectFromXpath(obj.properties[0].xpath)[0]
+                    )
+                };
             }
         }
-        
-        return item;
+        return json;
     },
     
     /**
@@ -405,7 +367,7 @@ var user = {
                         PG.User.data.library.stories.logout_user.action,
                         PG.User.data.library.stories.logout_user.objects
                     );
-                    PG.Util.createCookie('logout-try', JSON.stringify(s));
+                    PG.Util.createCookie('logout-try', '');
                 }
             }
         }else {
@@ -414,31 +376,16 @@ var user = {
                 && PG.Util.not_null(PG.User.data.library.stories.login_user.events.before)) {
                 if(PG.User.checkStory(PG.User.data.library.stories.login_user.events.before)) {
                     s = PG.User.getStory(
-                        PG.User.data.library.stories.login_user.action,
+                        top.location.href,
+                        'login_user',
                         PG.User.data.library.stories.login_user.objects
                     );
-                    PG.Util.createCookie('login-try', JSON.stringify(s));
-                }
-            }
-        }
-        
-        return;
-
-        if(PG.Util.not_null(PG.User.data.login) && PG.Util.not_null(PG.User.data.logout)) {
-            // check user is on login page 
-            if(!PG.User.isLogged() && PG.Util.matchUrl(PG.User.data.login.urls.page)) {
-                for(it in PG.User.data.login.items) {
-                    if(typeof PG.User.data.login.items[it] === 'object') {
-                        id += (id !== '') ? ':' : '';
-                        id += PG.Util.getValueFromObject(
-                            PG.Util.getDomElemntFromItem(PG.User.data.login.items[it])
-                        );
+                    console.log('login : ');
+                    console.log(s.objects);
+                    if(PG.Util.not_null(s.objects.property.value)) {
+                        PG.Util.createCookie('login-try', s.objects.property.value);
                     }
                 }
-                PG.Util.createCookie('login-try', id);
-            // check user is on logout page
-            }else if(PG.Util.matchUrl(PG.User.data.logout.urls.page)) {
-                PG.Util.createCookie('logout-try', 'logout');
             }
         }
     }

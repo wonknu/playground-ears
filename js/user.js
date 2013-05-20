@@ -318,8 +318,6 @@ var user = {
                 }
             }
         }
-        console.log(story);
-        console.log('use : ' + use);
         return use;
     },
     

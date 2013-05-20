@@ -1,4 +1,4 @@
-/**
+/*
  * this is the main application file, which one that init project bind event, etc...
  * Copyright (C) 2013 - Adfab - nicolas labb�
  * 
@@ -200,9 +200,7 @@ App.prototype.send = function (url)
                 uid: PG.User.uid
             },
             actions: [],
-            page: {
-                url: url
-            },
+            url: url,
             apiKey: PG.Settings.apiKey
         },
         n, o, use, userUrl, story, item, property;
@@ -217,7 +215,6 @@ App.prototype.send = function (url)
         
         // get variable if send this url
         if(PG.User.checkStory(story.conditions)) {
-            console.log('push : ' + JSON.stringify(story.objects))
             json.actions.push(PG.User.getStory(story.action, story.objects));
         }
     }
@@ -228,14 +225,8 @@ App.prototype.send = function (url)
         if(PG.User.isLogged()) {
             json.user.login = PG.User.id;
         }
-        json.user = JSON.stringify(json.user);
-        json.actions = JSON.stringify(json.actions);
-        json.objects = JSON.stringify(json.objects);
-        
-        console.log('JSON');
-        console.log(story.user);
-        console.log(story.actions);
-        console.log(story.objects);
+        json.actions = JSON.stringify(json.actions)
+        json.user = JSON.stringify(json.user)
         
         userUrl = PG.Cache.protocol + PG.Config.env[PG.Config.mode].url + PG.Config.env[PG.Config.mode].send;
         

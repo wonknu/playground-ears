@@ -319,14 +319,14 @@ var user = {
         if(PG.Util.not_null(obj)) {
         
             json.objects = {
-                id: obj.id,
-                properties: []
+                id: obj.id
             };
             
-            if(obj.properties.length > 0
-                && PG.Util.not_null(obj.properties[0].xpath)
-                    && PG.Util.not_null(obj.properties[0].name)
-                        && PG.Util.not_null(PG.Util.getObjectFromXpath(obj.properties[0].xpath)[0])) {
+            if(PG.Util.not_null(obj.properties)
+                &&obj.properties.length > 0
+                    && PG.Util.not_null(obj.properties[0].xpath)
+                        && PG.Util.not_null(obj.properties[0].name)
+                            && PG.Util.not_null(PG.Util.getObjectFromXpath(obj.properties[0].xpath)[0])) {
                 json.objects.properties = {
                     name: obj.properties[0].name,
                     value: PG.Util.getValueFromObject(

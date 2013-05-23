@@ -1,6 +1,7 @@
 <?php 
 header('Content-type: application/json');
 ?>
+<?php /*
 {
     "library":
     {
@@ -73,7 +74,6 @@ header('Content-type: application/json');
         }
     }
 }
-<?php /*
 {
     "library":
     {
@@ -148,3 +148,59 @@ header('Content-type: application/json');
     }
 }
 */ ?>
+{
+    "library":
+    {
+        "config": {
+            "broadcast": false
+        },
+        "stories":
+        {
+            "tips1" : {
+                "conditions": {
+                    "url": "/customer\\/account/"
+                },
+                "action": "find",
+                "objects": {
+                    "id": "tip 1"
+                }
+            },
+            "tips2" : {
+                "conditions": {
+                    "url": "/customer\\/account\\/edit/"
+                },
+                "action": "find",
+                "objects": {
+                    "id": "tip 2"
+                }
+            },
+            "tips3" : {
+                "conditions": {
+                    "url": "/customer\\/address\\/new/"
+                },
+                "action": "find",
+                "objects": {
+                    "id": "tip 3"
+                }
+            },
+            "tips4" : {
+                "conditions": {
+                    "url": "/sales\\/order\\/history/"
+                },
+                "action": "find",
+                "objects": {
+                    "id": "tip 4"
+                }
+            },
+            "tips5" : {
+                "conditions": {
+                    "url": "/sales\\/billing_agreement/"
+                },
+                "action": "find",
+                "objects": {
+                    "id": "tip 5"
+                }
+            }
+        }
+    }
+}

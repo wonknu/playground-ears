@@ -1,7 +1,6 @@
 <?php 
 header('Content-type: application/json');
 ?>
-<?php /*
 {
     "library":
     {
@@ -16,11 +15,8 @@ header('Content-type: application/json');
                         "xpath": "//input[@id='edit-name']"
                     },
                     "after": {
-                        "xpath": "//a[@title='Log Out']"
+                        "xpath": "//a[@href='/user/logout']"
                     }
-                },
-                "conditions": {
-                    "xpath": "//input[@id='edit-name']"
                 },
                 "action": "login",
                 "objects": {
@@ -36,24 +32,34 @@ header('Content-type: application/json');
             "logout_user" : {
                 "events": {
                     "before": {
-                        "xpath": "//a[@title='Log Out']"
+                        "xpath": "//a[@href='/user/logout']"
                     },
                     "after": {
-                        "url": "/logoutSuccess/",
-                        "xpath": "//a[@title='Log In']"
+                        "xpath": "//a[text()='Log in']"
                     }
-                },
-                "conditions": {
-                    "url": "/customer\\/account\\/logoutSuccess/",
-                    "xpath": "//a[@title='Log In']"
                 },
                 "action": "logout"
             },
-            "read_wishlist" : {
+            "read_article" : {
                 "conditions": {
                     "url": "/node/"
                 },
                 "action": "look",
+                "objects": {
+                    "id": "article",
+                    "properties": [
+                        {
+                            "name": "title",
+                            "xpath": "//h1"
+                        }
+                    ]
+                }
+            },
+            "read_account" : {
+                "conditions": {
+                    "url": "/user/"
+                },
+                "action": "account",
                 "objects": {
                     "id": "page",
                     "properties": [
@@ -63,26 +69,11 @@ header('Content-type: application/json');
                         }
                     ]
                 }
-            },
-            "check_wishlist" : {
-                "conditions": {
-                    "url": "/node/"
-                },
-                "action": "check",
-                "objects": {
-                    "id": "page",
-                    "properties": [
-                        {
-                            "name": "title",
-                            "xpath": "//div[@id='block-block-1']//h2"
-                        }
-                    ]
-                }
             }
         }
     }
 }
-*/ ?>
+<?php /*
 {
     "library":
     {
@@ -128,12 +119,12 @@ header('Content-type: application/json');
                         "xpath": "//a[@title='Log Out']"
                     },
                     "after": {
-                        "url": "/logoutSuccess/",
+                        "url": "/p.magento/",
                         "xpath": "//a[@title='Log In']"
                     }
                 },
                 "conditions": {
-                    "url": "/customer\\/account\\/logoutSuccess/",
+                    "url": "/logoutSuccess/",
                     "xpath": "//a[@title='Log In']"
                 },
                 "action": "logout"
@@ -156,3 +147,4 @@ header('Content-type: application/json');
         }
     }
 }
+*/ ?>

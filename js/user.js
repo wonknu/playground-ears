@@ -91,7 +91,6 @@ var user = {
     isLogged: function ()
     {
         'use strict';
-        
         var l;
         if(PG.User.id === '' || PG.User.id === null) {
             // check
@@ -157,23 +156,31 @@ var user = {
     {
         'use strict';
         
-        if(PG.Util.not_null(PG.Util.readCookie('login-try'))) { // USER TRIED TO LOGIN
-            if(PG.Util.not_null(PG.User.data.library.stories.login_user)
-                && PG.Util.not_null(PG.User.data.library.stories.login_user.events.after)
-                    && PG.User.checkStory(PG.User.data.library.stories.login_user.events.after)) {
-                PG.User.login(PG.Util.readCookie('login-try'));
-            }
-        }else if(PG.Util.not_null(PG.Util.readCookie('logout-try'))) { // USER TRIED TO LOUGOUT
+        if(PG.User.isLogged()
+            && PG.Util.not_null(PG.Util.readCookie('logout-try'))) { // USER TRIED TO LOUGOUT
             if(PG.Util.not_null(PG.User.data.library.stories.logout_user)
                 && PG.Util.not_null(PG.User.data.library.stories.logout_user.events.after)
                     && PG.User.checkStory(PG.User.data.library.stories.logout_user.events.after)) {
                 PG.User.logout();
             }
-        }else if(PG.Util.not_null(PG.Util.readCookie('login'))) { // USER IS ALREADY LOGGED
+        }else if(!PG.User.isLogged()
+            && PG.Util.not_null(PG.Util.readCookie('login-try'))) { // USER TRIED TO LOGIN
+            if(PG.Util.not_null(PG.User.data.library.stories.login_user)
+                && PG.Util.not_null(PG.User.data.library.stories.login_user.events.after)
+                    && PG.User.checkStory(PG.User.data.library.stories.login_user.events.after)) {
+                PG.User.login(PG.Util.readCookie('login-try'));
+            }
+        }else if(!PG.User.isLogged()
+            && PG.Util.not_null(PG.Util.readCookie('login'))) { // USER IS ALREADY LOGGED
             PG.User.login(PG.Util.readCookie('login'));
-        }else { // USER IS LOGGED OUT
+        }else if(PG.User.isLogged()) { // USER IS LOGGED OUT
             PG.User.logout();
         }
+        
+        PG.Util.eraseCookie('logout-try');
+        PG.Util.eraseCookie('login-try');
+        
+        PG.App.send(top.location.href);
     },
      
     /**
@@ -198,13 +205,10 @@ var user = {
     {
         'use strict';
         
-        PG.Util.eraseCookie('logout-try');
         PG.Util.log('Login "' + str + '"');
         if(PG.Util.not_null(str)) {
-            PG.Util.eraseCookie('login-try');
             PG.User.id = str;
             PG.Util.createCookie('login', str);
-            PG.App.send(top.location.href);
         }
         
         return PG.User.data.id;
@@ -231,11 +235,8 @@ var user = {
         'use strict';
         
         PG.Util.log('User is out');
-        PG.Util.eraseCookie('logout-try');
-        PG.Util.eraseCookie('login-try');
         PG.Util.eraseCookie('login');
         PG.User.id = null;
-        PG.App.send(top.location.href);
     },
     
     /**
@@ -303,19 +304,24 @@ var user = {
         
         var json = {
             user: {
-                anonymous: PG.User.uid,
-                login: (PG.User.isLogged()) ? PG.User.id : ''
+                anonymous: PG.User.uid
             },
+            objects: {},
             action: action,
-            objects: {
-                id: obj.id,
-                properties: []
-            },
             url: url,
             apiKey: PG.Settings.apiKey
         };
         
+        if(PG.User.isLogged()) {
+            json.user.login = PG.User.id;
+        }
+        
         if(PG.Util.not_null(obj)) {
+        
+            json.objects = {
+                id: obj.id,
+                properties: []
+            };
             
             if(obj.properties.length > 0
                 && PG.Util.not_null(obj.properties[0].xpath)
@@ -364,10 +370,11 @@ var user = {
                 && PG.Util.not_null(PG.User.data.library.stories.logout_user.events.before)) {
                 if(PG.User.checkStory(PG.User.data.library.stories.logout_user.events.before)) {
                     s = PG.User.getStory(
-                        PG.User.data.library.stories.logout_user.action,
+                        top.location.href,
+                        'logout_user',
                         PG.User.data.library.stories.logout_user.objects
                     );
-                    PG.Util.createCookie('logout-try', '');
+                    PG.Util.createCookie('logout-try', 'true');
                 }
             }
         }else {
@@ -380,10 +387,8 @@ var user = {
                         'login_user',
                         PG.User.data.library.stories.login_user.objects
                     );
-                    console.log('login : ');
-                    console.log(s.objects);
-                    if(PG.Util.not_null(s.objects.property.value)) {
-                        PG.Util.createCookie('login-try', s.objects.property.value);
+                    if(PG.Util.not_null(s.objects.properties.value)) {
+                        PG.Util.createCookie('login-try', s.objects.properties.value);
                     }
                 }
             }

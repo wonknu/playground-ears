@@ -55,7 +55,7 @@ App.prototype.init = function ()
     if(PG.Util.not_null(PG.Settings) && PG.Util.not_null(PG.Settings.apiKey)) {
         //PG.User.env = _plgd_settings;
         PG.Util.log('APIKEY FOUND = ' + PG.Settings.apiKey);
-    }else {
+    }else {        
         PG.Util.log('NO APIKEY FOUND');
         return;
     }
@@ -208,13 +208,16 @@ App.prototype.send = function (url)
         
         // get variable if send this url
         if(PG.User.checkStory(story.conditions)) {
-            json = PG.User.getStory(url, n, story.objects);
-        
+            json = PG.User.getStory(url, story.action, story.objects);
+            
             PG.App.rpc.request(
                 {
                     url: userUrl,
                     method: 'POST',
-                    data: json
+                    data: json,
+                    headers: {
+                        'Content-Type': 'application/json; charset=utf-8'
+                    }
                 },
                 function (rpcdata)
                 {

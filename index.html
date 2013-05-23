@@ -88,34 +88,38 @@
                         config.headers.Origin = remote.origin;
                     }
                     
-                    var isPOST = config.method == "POST";
+                    var isPOST = config.method == "POST" || config.method == "PUT" || config.method == "DELETE",
+                        pairs = [], data, req = getXhr(), url, key, prop, timeout;
                     
-                    // convert the data into a format we can send to the server 
-                    var pairs = [];
-                    for (var key in config.data) {
-                        if (config.data.hasOwnProperty(key)) {
-                            pairs.push(encodeURIComponent(key) + "=" + encodeURIComponent(config.data[key]));
+                    if(!isPOST) {
+                        // convert the data into a format we can send to the server
+                        for (key in config.data) {
+                            if (config.data.hasOwnProperty(key)) {
+                                pairs.push(encodeURIComponent(key) + "=" + encodeURIComponent(config.data[key]));
+                            }
                         }
+                        data = pairs.join("&");
+                    }else {
+                        data = JSON.stringify(config.data);
                     }
-                    var data = pairs.join("&");
                     
                     // create the XMLHttpRequest object
-                    var req = getXhr();
-                    var url = !isPOST && data
+                    url = !isPOST && data
                         ? config.url + (~config.url.indexOf('?') ? '&' : '?') + data
                         : config.url;
                     req.open(config.method, url, true);
                     
                     // apply the request headers
-                    for (var prop in config.headers) {
+                    for (prop in config.headers) {
                         if (config.headers.hasOwnProperty(prop) && config.headers[prop]) {
                             req.setRequestHeader(prop, config.headers[prop]);
                         }
                     }
                     
                     // set a timeout
-                    var timeout;
-                    timeout = setTimeout(function(){
+                    timeout;
+                    timeout = setTimeout(function ()
+                    {
                         // reset the handler
                         req.onreadystatechange = Function.prototype;
                         req.abort();

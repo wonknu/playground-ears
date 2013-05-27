@@ -157,49 +157,54 @@ App.prototype.trackAreaEvent = function ()
 {
     var i, story;
     
+    function bindEvent (obj, story)
+    {
+        obj.addEventListener(story.event.type, function (e)
+        {
+            var into = PG.Util.pointOnBox(
+                {
+                    x:e.pageX, 
+                    y:e.pageY
+                },
+                {
+                    x:story.event.area.x,
+                    y:story.event.area.y,
+                    width:story.event.area.width,
+                    height:story.event.area.height
+                }
+            );
+            
+            if(into) {
+                PG.App.sendToEXDM({
+                    url: PG.Cache.protocol + PG.Config.env[PG.Config.mode].url + PG.Config.env[PG.Config.mode].send,
+                    method: 'POST',
+                    data: PG.User.getStory(top.location.href, story.action, story.objects),
+                    headers: {
+                        'Content-Type': 'application/json; charset=utf-8'
+                    }
+                });
+            }
+        });
+        
+        if(PG.Config.debug) {
+            var div = document.createElement("div");
+            div.style.position = 'absolute';
+            div.style.left = story.event.area.x + 'px';
+            div.style.top = story.event.area.y + 'px';
+            div.style.width = story.event.area.width + 'px';
+            div.style.height = story.event.area.height + 'px';
+            div.style.backgroundColor = 'rgba(255, 0, 0, .2)';
+            document.body.appendChild(div);
+        }
+    }
+    
     for(i in PG.User.data.library.stories) {
         story = PG.User.data.library.stories[i];
         
         if(PG.User.checkStory(story.conditions)
             && PG.Util.not_null(story.event)) {
-            PG.Util.getObjectFromXpath(story.event.xpath)[0]
-                .addEventListener(story.event.type, function (e)
-            {
-                var into = PG.Util.pointOnBox(
-                    {
-                        x:e.pageX, 
-                        y:e.pageY
-                    },
-                    {
-                        x:story.event.area.x,
-                        y:story.event.area.y,
-                        width:story.event.area.width,
-                        height:story.event.area.height
-                    }
-                );
-                
-                if(into) {
-                    PG.App.sendToEXDM({
-                        url: PG.Cache.protocol + PG.Config.env[PG.Config.mode].url + PG.Config.env[PG.Config.mode].send,
-                        method: 'POST',
-                        data: PG.User.getStory(top.location.href, story.action, story.objects),
-                        headers: {
-                            'Content-Type': 'application/json; charset=utf-8'
-                        }
-                    });
-                }
-            });
-                
-            if(PG.Config.debug) {
-                var div = document.createElement("div");
-                div.style.position = 'absolute';
-                div.style.left = story.event.area.x + 'px';
-                div.style.top = story.event.area.y + 'px';
-                div.style.width = story.event.area.width + 'px';
-                div.style.height = story.event.area.height + 'px';
-                div.style.backgroundColor = 'rgba(255, 0, 0, .2)';
-                document.body.appendChild(div);
-            }
+            
+            bindEvent(PG.Util.getObjectFromXpath(story.event.xpath)[0], story);
         }
     }
 };

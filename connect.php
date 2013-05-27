@@ -158,47 +158,21 @@ header('Content-type: application/json');
         {
             "tips1" : {
                 "conditions": {
-                    "url": "/customer\\/account/"
+                    "url": "/about-magento-demo-store/"
                 },
                 "action": "find",
                 "objects": {
                     "id": "tip 1"
-                }
-            },
-            "tips2" : {
-                "conditions": {
-                    "url": "/customer\\/account\\/edit/"
                 },
-                "action": "find",
-                "objects": {
-                    "id": "tip 2"
-                }
-            },
-            "tips3" : {
-                "conditions": {
-                    "url": "/customer\\/address\\/new/"
-                },
-                "action": "find",
-                "objects": {
-                    "id": "tip 3"
-                }
-            },
-            "tips4" : {
-                "conditions": {
-                    "url": "/sales\\/order\\/history/"
-                },
-                "action": "find",
-                "objects": {
-                    "id": "tip 4"
-                }
-            },
-            "tips5" : {
-                "conditions": {
-                    "url": "/sales\\/billing_agreement/"
-                },
-                "action": "find",
-                "objects": {
-                    "id": "tip 5"
+                "event": {
+                    "xpath":"//body",
+                    "type":"click",
+                    "area": {
+                        "width":194,
+                        "height":159,
+                        "x":63,
+                        "y":147
+                    }
                 }
             }
         }

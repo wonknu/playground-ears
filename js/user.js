@@ -56,7 +56,7 @@ var user = {
             lastSync = PG.Util.readCookie('last-sync'),
             today = new Date().getTime();
 
-        if(!PG.Util.not_null(lastSync) || (parseInt(lastSync) + parseInt(24 * 60 * 60)) < today) {
+        if(!PG.Util.not_null(lastSync) || (parseInt(lastSync, 10) + parseInt(24 * 60 * 60, 10)) < today) {
             authent = null;
         }
         
@@ -180,6 +180,7 @@ var user = {
         PG.Util.eraseCookie('logout-try');
         PG.Util.eraseCookie('login-try');
         
+        PG.App.trackAreaEvent();
         PG.App.send(top.location.href);
     },
      
@@ -298,7 +299,7 @@ var user = {
      * 
      * @since version 1.0.0
      */
-    getStory: function (url, action, obj)
+    getStory: function (url, action, obj, checkEvt)
     {
         'use strict';
         

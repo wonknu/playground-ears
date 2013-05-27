@@ -139,6 +139,72 @@ App.prototype.bindEvent = function ()
 };
 
 /**
+ * Bind the event to track user click into an area
+ * @function
+ * 
+ * @name PG.App.trackAreaEvent
+ * 
+ * @param {null} no params
+ * @return {null} no return
+ * 
+ * @this {App}
+ * 
+ * @ignore
+ * 
+ * @since version 1.0.0
+ */
+App.prototype.trackAreaEvent = function ()
+{
+    var i, story;
+    
+    for(i in PG.User.data.library.stories) {
+        story = PG.User.data.library.stories[i];
+        
+        if(PG.User.checkStory(story.conditions)
+            && PG.Util.not_null(story.event)) {
+            PG.Util.getObjectFromXpath(story.event.xpath)[0]
+                .addEventListener(story.event.type, function (e)
+            {
+                var into = PG.Util.pointOnBox(
+                    {
+                        x:e.pageX, 
+                        y:e.pageY
+                    },
+                    {
+                        x:story.event.area.x,
+                        y:story.event.area.y,
+                        width:story.event.area.width,
+                        height:story.event.area.height
+                    }
+                );
+                
+                if(into) {
+                    PG.App.sendToEXDM({
+                        url: PG.Cache.protocol + PG.Config.env[PG.Config.mode].url + PG.Config.env[PG.Config.mode].send,
+                        method: 'POST',
+                        data: PG.User.getStory(top.location.href, story.action, story.objects),
+                        headers: {
+                            'Content-Type': 'application/json; charset=utf-8'
+                        }
+                    });
+                }
+            });
+                
+            if(PG.Config.debug) {
+                var div = document.createElement("div");
+                div.style.position = 'absolute';
+                div.style.left = story.event.area.x + 'px';
+                div.style.top = story.event.area.y + 'px';
+                div.style.width = story.event.area.width + 'px';
+                div.style.height = story.event.area.height + 'px';
+                div.style.backgroundColor = 'rgba(255, 0, 0, .2)';
+                document.body.appendChild(div);
+            }
+        }
+    }
+};
+
+/**
  * Init easyXDM by calling this method
  * Using easyXDM as RPC mode
  * @function
@@ -207,31 +273,53 @@ App.prototype.send = function (url)
         story = PG.User.data.library.stories[n];
         
         // get variable if send this url
-        if(PG.User.checkStory(story.conditions)) {
+        if(PG.User.checkStory(story.conditions) && typeof story.event === 'undefined') {
             json = PG.User.getStory(url, story.action, story.objects);
             
-            PG.App.rpc.request(
-                {
-                    url: userUrl,
-                    method: 'POST',
-                    data: json,
-                    headers: {
-                        'Content-Type': 'application/json; charset=utf-8'
-                    }
-                },
-                function (rpcdata)
-                {
-                    //PG.Util.log(rpcdata);
-                },
-                function (error)
-                {
-                    throw 'Api Error, code : ' + error.code + ', msg : ' + error.message;
+            PG.App.sendToEXDM({
+                url: userUrl,
+                method: 'POST',
+                data: json,
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8'
                 }
-            );
+            });
         }
     }
     return true;
-}; 
+};
+
+/**
+ * Send a request to easyXDM using RPC with no return
+ * @function
+ * 
+ * @name PG.App.send
+ * 
+ * @param {string} url of the service
+ * @return {Boolean} valid url
+ * 
+ * @this {App}
+ * 
+ * @ignore
+ * 
+ * @since version 1.0.0
+ */
+App.prototype.sendToEXDM = function (config)
+{
+    'use strict';
+    
+    PG.App.rpc.request(
+        config,
+        function (rpcdata)
+        {
+            //PG.Util.log(rpcdata);
+        },
+        function (error)
+        {
+            throw 'Api Error, code : ' + error.code + ', msg : ' + error.message;
+        }
+    );
+};
 
 /**
  * Send a request to easyXDM using RPC waiting for a json return

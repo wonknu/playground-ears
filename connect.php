@@ -168,48 +168,10 @@ header('Content-type: application/json');
                     "xpath":"//body",
                     "type":"click",
                     "area": {
-                        "width":194,
-                        "height":159,
-                        "x":63,
-                        "y":147
-                    }
-                }
-            },
-            "tips2" : {
-                "conditions": {
-                    "url": "/about-magento-demo-store/"
-                },
-                "action": "find2",
-                "objects": {
-                    "id": "tip 1"
-                },
-                "event": {
-                    "xpath":"//body",
-                    "type":"click",
-                    "area": {
-                        "width":100,
-                        "height":100,
-                        "x":463,
-                        "y":100
-                    }
-                }
-            },
-            "tips3" : {
-                "conditions": {
-                    "url": "/about-magento-demo-store/"
-                },
-                "action": "find3",
-                "objects": {
-                    "id": "tip 1"
-                },
-                "event": {
-                    "xpath":"//body",
-                    "type":"click",
-                    "area": {
-                        "width":200,
-                        "height":150,
-                        "x":200,
-                        "y":500
+                        "height": 71,
+                        "x": 54,
+                        "y": 285,
+                        "width": 63
                     }
                 }
             }

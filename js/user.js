@@ -26,7 +26,7 @@ var user = {
     uid: null,
     data: { },
     urls: {
-        current: top.location.href,
+        current: window.location.href,
         prev: null
     },
     
@@ -181,7 +181,7 @@ var user = {
         PG.Util.eraseCookie('login-try');
         
         PG.App.trackAreaEvent();
-        PG.App.send(top.location.href);
+        PG.App.send(window.location.href);
     },
      
     /**
@@ -363,7 +363,7 @@ var user = {
             id = '',
             s;
         
-        PG.Util.createCookie('prev-url', top.location.href);
+        PG.Util.createCookie('prev-url', window.location.href);
         
         if(PG.User.isLogged()) {
             // test logout
@@ -371,7 +371,7 @@ var user = {
                 && PG.Util.not_null(PG.User.data.library.stories.logout_user.events.before)) {
                 if(PG.User.checkStory(PG.User.data.library.stories.logout_user.events.before)) {
                     s = PG.User.getStory(
-                        top.location.href,
+                        window.location.href,
                         'logout_user',
                         PG.User.data.library.stories.logout_user.objects
                     );
@@ -384,7 +384,7 @@ var user = {
                 && PG.Util.not_null(PG.User.data.library.stories.login_user.events.before)) {
                 if(PG.User.checkStory(PG.User.data.library.stories.login_user.events.before)) {
                     s = PG.User.getStory(
-                        top.location.href,
+                        window.location.href,
                         'login_user',
                         PG.User.data.library.stories.login_user.objects
                     );

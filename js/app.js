@@ -178,7 +178,7 @@ App.prototype.trackAreaEvent = function ()
                 PG.App.sendToEXDM({
                     url: PG.Cache.protocol + PG.Config.env[PG.Config.mode].url + PG.Config.env[PG.Config.mode].send,
                     method: 'POST',
-                    data: PG.User.getStory(top.location.href, story.action, story.objects),
+                    data: PG.User.getStory(window.location.href, story.action, story.objects),
                     headers: {
                         'Content-Type': 'application/json; charset=utf-8'
                     }

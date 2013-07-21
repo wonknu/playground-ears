@@ -161,41 +161,20 @@ App.prototype.trackAreaEvent = function ()
     {
         obj.addEventListener(story.event.type, function (e)
         {
-            var into = PG.Util.pointOnBox(
-                {
-                    x:e.pageX, 
-                    y:e.pageY
-                },
-                {
-                    x:story.event.area.x,
-                    y:story.event.area.y,
-                    width:story.event.area.width,
-                    height:story.event.area.height
+        	var data = PG.User.getStory(window.location.href, story.action, story.objects);
+        	data.objects.x = e.pageX;
+        	data.objects.y = e.pageY;
+        	data.objects.text = window.getSelection().toString();
+        	
+            PG.App.sendToEXDM({
+                url: PG.Cache.protocol + PG.Config.env[PG.Config.mode].url + PG.Config.env[PG.Config.mode].send,
+                method: 'POST',
+                data: data,
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8'
                 }
-            );
-            
-            if(into) {
-                PG.App.sendToEXDM({
-                    url: PG.Cache.protocol + PG.Config.env[PG.Config.mode].url + PG.Config.env[PG.Config.mode].send,
-                    method: 'POST',
-                    data: PG.User.getStory(window.location.href, story.action, story.objects),
-                    headers: {
-                        'Content-Type': 'application/json; charset=utf-8'
-                    }
-                });
-            }
+            });
         });
-        
-        if(PG.Config.debug) {
-            var div = document.createElement("div");
-            div.style.position = 'absolute';
-            div.style.left = story.event.area.x + 'px';
-            div.style.top = story.event.area.y + 'px';
-            div.style.width = story.event.area.width + 'px';
-            div.style.height = story.event.area.height + 'px';
-            div.style.backgroundColor = 'rgba(255, 0, 0, .2)';
-            document.body.appendChild(div);
-        }
     }
     
     for(i in PG.User.data.library.stories) {

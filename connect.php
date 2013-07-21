@@ -147,6 +147,17 @@ header('Content-type: application/json');
         }
     }
 }
+
+					"area":
+					{
+						"y":8,
+						"x":8,
+						"text":null,
+						"width":276,
+						"height":268
+					}
+
+
 */ ?>
 {
     "library":
@@ -158,7 +169,7 @@ header('Content-type: application/json');
         {
             "tips1" : {
                 "conditions": {
-                    "url": "/about-magento-demo-store/"
+                    "url": "/playground.dev/"
                 },
                 "action": "find",
                 "objects": {
@@ -166,13 +177,7 @@ header('Content-type: application/json');
                 },
                 "event": {
                     "xpath":"//body",
-                    "type":"click",
-                    "area": {
-                        "height": 71,
-                        "x": 54,
-                        "y": 285,
-                        "width": 63
-                    }
+                    "type":"mouseup"
                 }
             }
         }
